@@ -64,7 +64,9 @@ def func(y,t,Ht,PhiMaxNa,PLNa,PLK,PGNa,PGK,PGA,F,R,T,kCo,kHA,d,fHb,QHb,QMg,QX,KB
 	#dVwdt   = ((CmNa + CmK + CmA + CmB + CmY)*(dQNadt + dQKdt + dQAdt) - (fHb * QHb + QNa + QK + QA + QMg + QX) * (dCmNadt + dCmKdt + dCmAdt + dCmBdt + dCmYdt))/((CmNa + CmK + CmA + CmB + CmY)**2)
 	#avec formule léna
 	#dVwdt   =  ((dQNadt + dQKdt + dQAdt)/(CmNa + CmK + CmA + CmB + CmY))
-	#MODIFICATION
+	# Formule avec fHb : 
+	#dVwdt =  ( (dQKdt + dQAdt) * ( (CmNa + CmK + CmA + CmB + CmY) + ( (fHb*QHb + QNa + QK + QA + QMg + QX) * (Ht/1-Ht) ) ) ) / ( (CmNa + CmK + CmA + CmB + CmY) * ( (CmNa + CmK + CmA + CmB + CmY) + ( (fHb*QHb + QNa + QK + QA + QMg + QX) * (Ht/1-Ht) ) + (b*(QHb**2)/(Vw**2) ) + (2*c*(QHb**3)/(Vw**3) ) ) )	
+	# ... mais rajouter fHb dans le vecteur !
 	
 	dVwdt   =  ((dQKdt + dQAdt)/(CmNa + CmK + CmA + CmB + CmY))
 	
