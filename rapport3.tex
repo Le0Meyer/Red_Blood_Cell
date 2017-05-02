@@ -81,137 +81,163 @@ Nous définissons ensuite les variables d'intérêt du système, où $i$ corresp
 Quantité de l'espèce $i$ dans un litre de solution de cellules compactées  & $Q_i$                    & $mmol.loc^{-1}$     \\
 Charge net de l'ion imperméant intracellulaire                         & $Q_{(-)}$               & $mEq.loc^{-1}$      \\
 Concentration de l'espèce $i$ dans le cytoplasme                           & $C_{i}^{c}$              & $mmol.l^{-1}$       \\
-Concentration de l'espèce $i$ dans le milieu extracellulaire               & $C_{i}^{m}$              & $mmol.l^{-1}$       \\\\
-
+Concentration de l'espèce $i$ dans le milieu extracellulaire               & $C_{i}^{m}$              & $mmol.l^{-1}$       \\
 pH intracellulaire                                                     & $pH^c$                                         \\
-pH extracellulaire                                                     & $pH^m$                                         \\\\
-
-Volume du cytoplasme dans un litre de solution de cellules compactées & $V_w$                    & $l.loc^{-1}$        \\\\
-
+pH extracellulaire                                                     & $pH^m$                                         \\
+Volume du cytoplasme dans un litre de solution de cellules compactées & $V_w$                    & $l.loc^{-1}$        \\
 Flux total de l'espèce $i$ (nécessairement perméant)                       & $\Phi_i$                 & $mmol.loc^{-1}.h^{-1}$\\
 Flux partiel à travers la pompe Na: K de l'espèce $i$                      & $\Phi_{i}^{P}$           & $mmol.loc^{-1}.h^{-1}$\\
 Flux partiel lié à la diffusion de l'espèce $i$                             & $\Phi_{i}^{L}$           & $mmol.loc^{-1}.h^{-1}$\\
 Flux partiel lié à l'électro-diffusion de l'espèce $i$                      & $\Phi_{i}^{G}$           & $mmol.loc^{-1}.h^{-1}$\\
 Flux partiel à travers le co-transporteur Na: K: 2A de l'espèce $i$         & $\Phi_{i}^{Co}$          & $mmol.loc^{-1}.h^{-1}$\\
-Flux partiel à travers le co-transporteur H: A de l'espèce $i$              & $\Phi_{i}^{HA}$          & $mmol.loc^{-1}.h^{-1}$\\\\
-
+Flux partiel à travers le co-transporteur H: A de l'espèce $i$              & $\Phi_{i}^{HA}$          & $mmol.loc^{-1}.h^{-1}$\\
 Coefficient osmotique de l'hémoglobine                                 & $f_{Hb}$                                       \\
 
-\end{tabular}\\
+\end{tabular}
 
 
 
-\begin{tabular}{p{8.4cm}cr}
+\begin{tabular}{p{8cm}cr}
 
-\textbf{Paramètres}                                             & \textbf{Abréviation}     & \textbf{Unité}      \\\\
-
-Taux d'hématocrite                                             & $Ht$                                           \\\\
-
-Volume intracellulaire initial                                 & $V_{w}^{\left(0\right)}$                       \\\\
-
+\textbf{Paramètres}                                             & \textbf{Abréviation}     & \textbf{Unité}      \\
+Taux d'hématocrite                                             & $Ht$                                           \\
+Volume intracellulaire initial                                 & $V_{w}^{\left(0\right)}$                       \\
 Perméabilité de l'espèce $i$ lors de la diffusion                  & $P_{i}^{L}$              & $h^{-1}$            \\
-Perméabilité de l'espèce $i$ lors de l'électro-diffusion            & $P_{i}^{G}$              & $h^{-1}$            \\\\
-
+Perméabilité de l'espèce $i$ lors de l'électro-diffusion            & $P_{i}^{G}$              & $h^{-1}$            \\
 Constante de turnover du co-transport Na: K: 2A (Co)            & $k_{Co}$                                       \\
-Constante de turnover du co-transport H: A (HA)                 & $k_{HA}$                                       \\\\
-
-Valence de l'ion $i$                                             & $z_i$                                          \\\\
-
+Constante de turnover du co-transport H: A (HA)                 & $k_{HA}$                                       \\
+Valence de l'ion $i$                                             & $z_i$                                          \\
 Constante de Faraday                                           & $F$                      & $s.A.mol^{-1}$      \\
 Constante des gaz parfaits                                     & $R$                      & $J.mol^{-1}.K^{-1}$ \\
-Température absolue                                            & $T$                      & $K$                 \\\\
-
+Température absolue                                            & $T$                      & $K$                 \\
 pH isoélectrique de l'hémoglobine                              & $pI$                                           \\
 Constante de dissociation de la solution tampon B              & $K_B$                    & $mol.l^{-1}$        \\
-Charge négative nette de l'hémoglobine lorsque $pH^c = pI + 1$ & $a$  & $Eq.mol^{-1}$  \\\\
-
-Coefficients viriaux de l'équation de $f_{Hb}$                 & $b, c$                   &                     \\\\
-
-Facteur de compensation dans le co-transport Na: K: 2A          & $d$                      &                     \\\\
-
+Charge négative nette de l'hémoglobine lorsque $pH^c = pI + 1$ & $a$  & $Eq.mol^{-1}$  \\
+Coefficients viriaux de l'équation de $f_{Hb}$                 & $b, c$                   &                     \\
+Facteur de compensation dans le co-transport Na: K: 2A          & $d$                      &                     \\
 Flux saturé de Na à travers la pompe Na: K                   & $\Phi_{max}^{Na}$        & $mmol.loc^{-1}.h^{-1}$ \\
 
-\end{tabular}\\\\
+\end{tabular}
 
 
 
 \section{Équations constitutives}
 
-\subsection{Flux pour chaque transporteur}
-
-Concentration extra-cellulaire de H (dont on a besoin pour déterminer $FluxHA$)
+\subsection{Équations des différents flux}
 
 \begin{equation}
-CmH  = \frac{{KB}\times{CmHB}}{CmB-CmHB}
+\Phi_{Na}^{P}={-\Phi_{max}^{Na}}\times{\left(\frac{Q_{Na}/V_w}{Q_{Na}/V_w+0.1\left(1+\frac{Q_{K}/V_w}{8.3}\right)}\right)^3}\times{\left(\frac{C_{K}^{m}}{C_{K}^{m}+0.1\left(1+\frac{C_{Na}^{m}}{18}\right)}\right)^2}
 \end{equation}
 
 \begin{equation}
-FluxHA  = {-kHA}\times{( \frac{{QA}\times{QH}}{Vw^2} - {CmA}\times{CmH}})
-\end{equation}\\
-
-
-\subsection{Flux des ions (dérivées des quantités intracellulaires)}
-
-\begin{equation}
-dQNadt  = FluxPNa + FluxLNa + FluxGNa + FluxCo
+\Phi_{K}^{P}=-\frac{\Phi_{Na}^{P}}{1.5}
 \end{equation}
 
 \begin{equation}
-dQKdt   = FluxPK  + FluxLK  + FluxGK  + FluxCo
+\Phi_{Na}^{L}={-P_{Na}^{L}}\times{\left(\frac{Q_{Na}}{V_w}-C_{Na}^{m}\right)}
 \end{equation}
 
 \begin{equation}
-dQAdt   = FluxGA  + FluxHA  + FluxCo
+\Phi_{K}^{L}={-P_{K}^{L}}\times{\left(\frac{Q_{K}}{V_w}-C_{K}^{m}\right)}
 \end{equation}
 
-\begin{equation}
-dQHdt   = FluxHA
-\end{equation}
-
-\subsection{Dérivée du volume}
-\begin{equation}
-dVwdt   =  \frac{dQKdt + dQAdt}{CmNa + CmK + CmA + CmB + CmY}
-\end{equation}\\
-
-\subsection{Dérivées des concentrations extracellulaires}
-
-Pourcentage d'hémoglobine dans le sang (dont on a besoin pour déterminer les $dCmdt$)
-
-\begin{equation}
-Ht = {Ht0}\times{\exp{(Vw-Vw0)}}
-\end{equation}
-
-\begin{equation}
-dCmNadt = {\frac{Ht}{1 - Ht}}\times{(CmNa-dQNadt)}
-\end{equation}
-
-\begin{equation}
-dCmKdt = {\frac{Ht}{1 - Ht}}\times{(CmK-dQKdt)}
-\end{equation}
-
-\begin{equation}
-dCmAdt = {\frac{Ht}{1 - Ht}}\times{(CmA-dQAdt)}
-\end{equation}
-
-\begin{equation}
-dCmHBdt = {\frac{Ht}{1 - Ht}}\times{(CmHB-dQHdt)}
-\end{equation}
-
-\begin{equation}
-dCmBdt = {\frac{Ht}{1 - Ht}}\times{CmB}
-\end{equation}
-
-\begin{equation}
-dCmYdt = {\frac{Ht}{1 - Ht}}\times{CmB}
-\end{equation}\\
-
-\subsection{Potentiel de membrane}
+\subsection{Équations des flux électro-diffusifs}
 
 \begin{equation}
 E =  \frac{RT}{F}\log{\left(\frac{{PGNa}\times{QN}/Vw + {PGK}\times{QK/Vw} + {PGA}\times{CmA}}{{PGNa}\times{CmNa} + {PGK}\times{CmK} + {PGA}\times{QA/Vw}}\right)}
 \end{equation}
 
-	
+\begin{equation}
+\Phi_{Na}^{G}={-P_{Na}^{G}}\times{\frac{FE}{RT}}\times{\left(\frac{Q_{Na}/V_w-{C_{Na}^{m}}\times{\exp{\frac{-FE}{RT}}}}{1 - \exp{\frac{-FE}{RT}}}\right)}
+\end{equation}
+
+\begin{equation}
+\Phi_{K}^{G}={-P_{K}^{G}}\times{\frac{FE}{RT}}\times{\left(\frac{Q_{K}/V_w-{C_{K}^{m}}\times{\exp{\frac{-FE}{RT}}}}{1 - \exp{\frac{-FE}{RT}}}\right)}
+\end{equation}
+
+\begin{equation}
+\Phi_{A}^{G}={+P_{A}^{G}}\times{\frac{FE}{RT}}\times{\left(\frac{Q_{A}/V_w-{C_{K}^{m}}\times{\exp{\frac{+FE}{RT}}}}{1 - \exp{\frac{+FE}{RT}}}\right)}
+\end{equation}
+
+\subsection{Équations du cotransporteur Na:K:A}
+
+\begin{equation}
+\Phi_{A}^{Co}={-k_{Co}}\times{\left(\frac{{Q_{A}^2}\times{Q_{Na}}\times{Q_{K}}}{V_w^4}-{d}\times{\left(C_{A}^{m}\right)^2}\times{C_{Na}^{m}}\times{C_{K}^{m}}\right)}
+\end{equation}
+
+\begin{equation}
+\Phi_{Na}^{Co}=\Phi_{K}^{Co}=\frac{\Phi_{A}^{Co}}{2}
+\end{equation}
+
+\subsection{Équations du flux HA}
+
+Concentration extra-cellulaire de H (dont on a besoin pour déterminer $FluxHA$)
+
+\begin{equation}
+C_{H}^{m}={K_B}\times{\frac{C_{HB}^{m}}{C_{B}^{m}-C_{HB}^{m}}}
+\end{equation}
+
+\begin{equation}
+\Phi_{H}^{HA}=\Phi_{A}^{HA}={-k_{HA}}\times{( \frac{{Q_A}\times{Q_H}}{V_w^2} - {C_{A}^{m}}\times{C_{H}^{m}}})
+\end{equation}\\
+
+
+\subsection{Variations des quantités Q}
+
+\begin{equation}
+\frac{dQ_{Na}}{dt}=\Phi_{Na}^{P}+\Phi_{Na}^{L}+\Phi_{Na}^{G}+\Phi_{Na}^{Co}
+\end{equation}
+
+\begin{equation}
+\frac{dQ_K}{dt}=\Phi_{K}^{P}+\Phi_{K}^{L}+\Phi_{K}^{G}+\Phi_{K}^{Co}
+\end{equation}
+
+\begin{equation}
+\frac{dQ_A}{dt}=\Phi_{A}^{G}+\Phi_{A}^{HA}+\Phi_{A}^{Co}
+\end{equation}
+
+\begin{equation}
+\frac{dQ_H}{dt}=\Phi_{H}^{HA}
+\end{equation}
+
+\subsection{Variation du volume intra-cellulaire}
+
+\begin{equation}
+\frac{dV_w}{dt}   = \frac{\frac{dQ_K}{dt}+\frac{dQ_A}{dt}}{C_{Na}^{m}+C_{K}^{m}+C_{A}^{m}+C_{B}^{m}+C_{Y}^{m}}
+\end{equation}
+
+\subsection{Variation des concentrations extra-cellulaires Cm}
+
+Pourcentage d'hémoglobine dans le sang (dont on a besoin pour déterminer les $dCmdt$)
+
+\begin{equation}
+Ht = {Ht_0}\times{\exp{(V_w-V_w^0)}}
+\end{equation}
+
+\begin{equation}
+\frac{dC_{Na}^m}{dt}={\frac{Ht}{1 - Ht}}\times{\left(C_{Na}^m-\frac{dQ_{Na}}{dt}\right)}
+\end{equation}
+
+\begin{equation}
+\frac{dC_{K}^m}{dt}={\frac{Ht}{1 - Ht}}\times{\left(C_{K}^m-\frac{dQ_{K}}{dt}\right)}
+\end{equation}
+
+\begin{equation}
+\frac{dC_{A}^m}{dt}={\frac{Ht}{1 - Ht}}\times{\left(C_{A}^m-\frac{dQ_{A}}{dt}\right)}
+\end{equation}
+
+\begin{equation}
+\frac{dC_{HB}^m}{dt}={\frac{Ht}{1 - Ht}}\times{\left(C_{HB}^m-\frac{dQ_{H}}{dt}\right)}
+\end{equation}
+
+\begin{equation}
+\frac{dC_{B}^m}{dt}={\frac{Ht}{1 - Ht}}\times{C_{B}^m}
+\end{equation}
+
+\begin{equation}
+\frac{dC_{Y}^m}{dt}={\frac{Ht}{1 - Ht}}\times{C_{Y}^m}
+\end{equation}
+
 
 \section{Implémentation}   
 
@@ -251,4 +277,3 @@ E =  \frac{RT}{F}\log{\left(\frac{{PGNa}\times{QN}/Vw + {PGK}\times{QK/Vw} + {PG
 % \listoftables               % Liste des tableaux
 
 \end{document}
-
