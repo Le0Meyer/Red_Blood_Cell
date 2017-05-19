@@ -194,56 +194,20 @@ C_{H}^{m}={K_B}\times{\frac{C_{HB}^{m}}{C_{B}^{m}-C_{HB}^{m}}}
 
 \subsection{Equations du système d'équations différentielles}
 
-\subsubsection*{Variations des quantités Q}
+\begin{empheq}[left=\empheqlbrace]{align}
+&\frac{dQ_{Na}}{dt}=\Phi_{Na}=\Phi_{Na}^{P}+\Phi_{Na}^{L}+\Phi_{Na}^{G}+\Phi_{Na}^{Co}\label{eq-1}\\
+&\frac{dQ_K}{dt}=\Phi_{K}=\Phi_{K}^{P}+\Phi_{K}^{L}+\Phi_{K}^{G}+\Phi_{K}^{Co}\\
+&\frac{dQ_A}{dt}=\Phi_{A}=\Phi_{A}^{G}+\Phi_{A}^{HA}+\Phi_{A}^{Co}\\
+&\frac{dQ_H}{dt}=\Phi_{H}=\Phi_{H}^{HA}\\
+&\frac{dV_w}{dt}= \frac{\dfrac{dQ_Na}{dt}+\dfrac{dQ_K}{dt}+\dfrac{dQ_A}{dt}}{C_{Na}^{m}+C_{K}^{m}+C_{A}^{m}+C_{B}^{m}+C_{Y}^{m}}\\
+&\frac{dC_{Na}^m}{dt}={\frac{Ht}{1 - Ht}}\times{\left(C_{Na}^m-\frac{dQ_{Na}}{dt}\right)}\\
+&\frac{dC_{K}^m}{dt}={\frac{Ht}{1 - Ht}}\times{\left(C_{K}^m-\frac{dQ_{K}}{dt}\right)}\\
+&\frac{dC_{A}^m}{dt}={\frac{Ht}{1 - Ht}}\times{\left(C_{A}^m-\frac{dQ_{A}}{dt}\right)}\\
+&\frac{dC_{HB}^m}{dt}={\frac{Ht}{1 - Ht}}\times{\left(C_{HB}^m-\frac{dQ_{H}}{dt}\right)}\\
+&\frac{dC_{B}^m}{dt}={\frac{Ht}{1 - Ht}}\times{C_{B}^m}\\
+&\frac{dC_{Y}^m}{dt}={\frac{Ht}{1 - Ht}}\times{C_{Y}^m}\\
+\end{empheq}
 
-\begin{equation}
-\frac{dQ_{Na}}{dt}=\Phi_{Na}=\Phi_{Na}^{P}+\Phi_{Na}^{L}+\Phi_{Na}^{G}+\Phi_{Na}^{Co}
-\end{equation}
-
-\begin{equation}
-\frac{dQ_K}{dt}=\Phi_{K}=\Phi_{K}^{P}+\Phi_{K}^{L}+\Phi_{K}^{G}+\Phi_{K}^{Co}
-\end{equation}
-
-\begin{equation}
-\frac{dQ_A}{dt}=\Phi_{A}=\Phi_{A}^{G}+\Phi_{A}^{HA}+\Phi_{A}^{Co}
-\end{equation}
-
-\begin{equation}
-\frac{dQ_H}{dt}=\Phi_{H}=\Phi_{H}^{HA}
-\end{equation}
-
-
-\subsubsection*{Vartiation du volume intra-cellulaire}
-
-\begin{equation}
-\frac{dV_w}{dt}   = \frac{\frac{dQ_K}{dt}+\frac{dQ_A}{dt}}{C_{Na}^{m}+C_{K}^{m}+C_{A}^{m}+C_{B}^{m}+C_{Y}^{m}}
-\end{equation}
-
-\subsubsection*{Variation des concentrations extra-cellulaires Cm}
-
-\begin{equation}
-\frac{dC_{Na}^m}{dt}={\frac{Ht}{1 - Ht}}\times{\left(C_{Na}^m-\frac{dQ_{Na}}{dt}\right)}
-\end{equation}
-
-\begin{equation}
-\frac{dC_{K}^m}{dt}={\frac{Ht}{1 - Ht}}\times{\left(C_{K}^m-\frac{dQ_{K}}{dt}\right)}
-\end{equation}
-
-\begin{equation}
-\frac{dC_{A}^m}{dt}={\frac{Ht}{1 - Ht}}\times{\left(C_{A}^m-\frac{dQ_{A}}{dt}\right)}
-\end{equation}
-
-\begin{equation}
-\frac{dC_{HB}^m}{dt}={\frac{Ht}{1 - Ht}}\times{\left(C_{HB}^m-\frac{dQ_{H}}{dt}\right)}
-\end{equation}
-
-\begin{equation}
-\frac{dC_{B}^m}{dt}={\frac{Ht}{1 - Ht}}\times{C_{B}^m}
-\end{equation}
-
-\begin{equation}
-\frac{dC_{Y}^m}{dt}={\frac{Ht}{1 - Ht}}\times{C_{Y}^m}
-\end{equation}
 
 
 \section{Implémentation}   
