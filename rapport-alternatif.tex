@@ -140,14 +140,14 @@ Ht = Ht_0\,\exp{(V_w-V_w^0)}
 Concentration extra-cellulaire de H (dont on a besoin pour déterminer $FluxHA$)
 
 \begin{equation}
-C_{H}^{m}={K_B}\times{\frac{C_{HB}^{m}}{C_{B}^{m}-C_{HB}^{m}}}
+{C_{H}^{c,m}=\exp_{10}{\left(-pH^{c,m}\right)}}\Longleftrightarrow{pH^{c,m}=-\log{\left(-C_{H}^{c,m}\right)}}
 \end{equation}
 
 \subsection{Equations liées aux flux}
 \subsubsection*{Équations des différents flux}
 
 \begin{equation}
-\Phi_{Na}^{P}={-\Phi_{max}^{Na}}\times{\left(\frac{Q_{Na}/V_w}{Q_{Na}/V_w+0.1\left(1+\frac{Q_{K}/V_w}{8.3}\right)}\right)^3}\times{\left(\frac{C_{K}^{m}}{C_{K}^{m}+0.1\left(1+\frac{C_{Na}^{m}}{18}\right)}\right)^2}
+\Phi_{Na}^{P}=-\Phi_{max}^{Na}\left(\frac{\dfrac{Q_{Na}}{V_w}}{\dfrac{Q_{Na}}{V_w} + 0.1\left(1+\dfrac{8.3\,Q_{K}}{V_w}\right)}\right)^3\left(\dfrac{C_{K}^{m}}{C_{K}^{m}+0.1\left(1+\dfrac{C_{Na}^{m}}{18}\right)}\right)^2
 \end{equation}
 
 \begin{equation}
@@ -155,31 +155,31 @@ C_{H}^{m}={K_B}\times{\frac{C_{HB}^{m}}{C_{B}^{m}-C_{HB}^{m}}}
 \end{equation}
 
 \begin{equation}
-\Phi_{Na}^{L}={-P_{Na}^{L}}\times{\left(\frac{Q_{Na}}{V_w}-C_{Na}^{m}\right)}
+\Phi_{Na}^{L}=-P_{Na}^{L}\left(\frac{Q_{Na}}{V_w}-C_{Na}^{m}\right)
 \end{equation}
 
 \begin{equation}
-\Phi_{K}^{L}={-P_{K}^{L}}\times{\left(\frac{Q_{K}}{V_w}-C_{K}^{m}\right)}
+\Phi_{K}^{L}=-P_{K}^{L}\left(\frac{Q_{K}}{V_w}-C_{K}^{m}\right)
 \end{equation}
 
 \subsubsection*{Équations des flux électro-diffusifs}
 
 \begin{equation}
-\Phi_{Na}^{G}={-P_{Na}^{G}}\times{\frac{FE}{RT}}\times{\left(\frac{Q_{Na}/V_w-{C_{Na}^{m}}\times{\exp{\frac{-FE}{RT}}}}{1 - \exp{\frac{-FE}{RT}}}\right)}
+\Phi_{Na}^{G}=-P_{Na}^{G}\,\frac{FE}{RT}\left(\frac{\dfrac{Q_{Na}}{V_w}\,-\,{C_{Na}^{m}\exp{\dfrac{-FE}{RT}}}}{1 - \exp{\dfrac{-FE}{RT}}}\right)
 \end{equation}
 
 \begin{equation}
-\Phi_{K}^{G}={-P_{K}^{G}}\times{\frac{FE}{RT}}\times{\left(\frac{Q_{K}/V_w-{C_{K}^{m}}\times{\exp{\frac{-FE}{RT}}}}{1 - \exp{\frac{-FE}{RT}}}\right)}
+\Phi_{K}^{G}=-P_{K}^{G}\,\frac{FE}{RT}\left(\dfrac{\dfrac{Q_{K}}{V_w}-{C_{K}^{m}\,\exp{\dfrac{-FE}{RT}}}}{1 - \exp{\dfrac{-FE}{RT}}}\right)
 \end{equation}
 
 \begin{equation}
-\Phi_{A}^{G}={+P_{A}^{G}}\times{\frac{FE}{RT}}\times{\left(\frac{Q_{A}/V_w-{C_{K}^{m}}\times{\exp{\frac{+FE}{RT}}}}{1 - \exp{\frac{+FE}{RT}}}\right)}
+\Phi_{A}^{G}=+P_{A}^{G}\,\frac{FE}{RT}\left(\dfrac{\dfrac{Q_{A}}{V_w}\,-\,{C_{K}^{m}\exp{\dfrac{+FE}{RT}}}}{1 - \exp{\dfrac{+FE}{RT}}}\right)
 \end{equation}
 
 \subsubsection*{Équations du cotransporteur Na:K:A}
 
 \begin{equation}
-\Phi_{A}^{Co}={-k_{Co}}\times{\left(\frac{{Q_{A}^2}\times{Q_{Na}}\times{Q_{K}}}{V_w^4}-{d}\times{\left(C_{A}^{m}\right)^2}\times{C_{Na}^{m}}\times{C_{K}^{m}}\right)}
+\Phi_{A}^{Co}=-k_{Co}\left(\frac{Q_{A}^2\,Q_{Na}\,Q_{K}}{V_w^4}-d\left(C_{A}^{m}\right)^2C_{Na}^{m}C_{K}^{m}\right)
 \end{equation}
 
 \begin{equation}
@@ -189,23 +189,23 @@ C_{H}^{m}={K_B}\times{\frac{C_{HB}^{m}}{C_{B}^{m}-C_{HB}^{m}}}
 \subsubsection*{Équations du flux HA}
 
 \begin{equation}
-\Phi_{H}^{HA}=\Phi_{A}^{HA}={-k_{HA}}\times{( \frac{{Q_A}\times{Q_H}}{V_w^2} - {C_{A}^{m}}\times{C_{H}^{m}}})
+\Phi_{H}^{HA}=\Phi_{A}^{HA}=-k_{HA}( \frac{Q_A\,Q_H}{V_w^2} - C_{A}^{m}\,C_{H}^{m})
 \end{equation}\\
 
 \subsection{Equations du système d'équations différentielles}
 
 \begin{empheq}[left=\empheqlbrace]{align}
-&\frac{dQ_{Na}}{dt}=\Phi_{Na}=\Phi_{Na}^{P}+\Phi_{Na}^{L}+\Phi_{Na}^{G}+\Phi_{Na}^{Co}\label{eq-1}\\
+&\frac{dQ_{Na}}{dt}=\Phi_{Na}=\Phi_{Na}^{P}+\Phi_{Na}^{L}+\Phi_{Na}^{G}+\Phi_{Na}^{Co}\\
 &\frac{dQ_K}{dt}=\Phi_{K}=\Phi_{K}^{P}+\Phi_{K}^{L}+\Phi_{K}^{G}+\Phi_{K}^{Co}\\
 &\frac{dQ_A}{dt}=\Phi_{A}=\Phi_{A}^{G}+\Phi_{A}^{HA}+\Phi_{A}^{Co}\\
 &\frac{dQ_H}{dt}=\Phi_{H}=\Phi_{H}^{HA}\\
 &\frac{dV_w}{dt}= \frac{\dfrac{dQ_Na}{dt}+\dfrac{dQ_K}{dt}+\dfrac{dQ_A}{dt}}{C_{Na}^{m}+C_{K}^{m}+C_{A}^{m}+C_{B}^{m}+C_{Y}^{m}}\\
-&\frac{dC_{Na}^m}{dt}={\frac{Ht}{1 - Ht}}\times{\left(C_{Na}^m-\frac{dQ_{Na}}{dt}\right)}\\
-&\frac{dC_{K}^m}{dt}={\frac{Ht}{1 - Ht}}\times{\left(C_{K}^m-\frac{dQ_{K}}{dt}\right)}\\
-&\frac{dC_{A}^m}{dt}={\frac{Ht}{1 - Ht}}\times{\left(C_{A}^m-\frac{dQ_{A}}{dt}\right)}\\
-&\frac{dC_{HB}^m}{dt}={\frac{Ht}{1 - Ht}}\times{\left(C_{HB}^m-\frac{dQ_{H}}{dt}\right)}\\
-&\frac{dC_{B}^m}{dt}={\frac{Ht}{1 - Ht}}\times{C_{B}^m}\\
-&\frac{dC_{Y}^m}{dt}={\frac{Ht}{1 - Ht}}\times{C_{Y}^m}\\
+&\frac{dC_{Na}^m}{dt}=\frac{Ht}{1 - Ht}\left(C_{Na}^m-\frac{dQ_{Na}}{dt}\right)\\
+&\frac{dC_{K}^m}{dt}=\frac{Ht}{1 - Ht}\left(C_{K}^m-\frac{dQ_{K}}{dt}\right)\\
+&\frac{dC_{A}^m}{dt}=\frac{Ht}{1 - Ht}\left(C_{A}^m-\frac{dQ_{A}}{dt}\right)\\
+&\frac{dC_{HB}^m}{dt}=\frac{Ht}{1 - Ht}\left(C_{HB}^m-\frac{dQ_{H}}{dt}\right)\\
+&\frac{dC_{B}^m}{dt}=\frac{Ht}{1 - Ht}\,C_{B}^m\\
+&\frac{dC_{Y}^m}{dt}=\frac{Ht}{1 - Ht}\,C_{Y}^m\\
 \end{empheq}
 
 
