@@ -198,17 +198,17 @@ Concentration extra-cellulaire de H (dont on a besoin pour déterminer $FluxHA$)
 \subsection{Equations du système d'équations différentielles}
 
 \begin{empheq}[left=\empheqlbrace]{align}
-&\frac{dQ_{Na}}{dt}=\Phi_{Na}=\Phi_{Na}^{P}+\Phi_{Na}^{L}+\Phi_{Na}^{G}+\Phi_{Na}^{Co}\label{dQNadt}\\
-&\frac{dQ_K}{dt}=\Phi_{K}=\Phi_{K}^{P}+\Phi_{K}^{L}+\Phi_{K}^{G}+\Phi_{K}^{Co}\label{dQKdt}\\
-&\frac{dQ_A}{dt}=\Phi_{A}=\Phi_{A}^{G}+\Phi_{A}^{HA}+\Phi_{A}^{Co}\label{dQAdt}\\
-&\frac{dQ_H}{dt}=\Phi_{H}=\Phi_{H}^{HA}\label{dQHdt}\\
-&\frac{dV_w}{dt}= \frac{\dfrac{dQ_Na}{dt}+\dfrac{dQ_K}{dt}+\dfrac{dQ_A}{dt}}{C_{Na}^{m}+C_{K}^{m}+C_{A}^{m}+C_{B}^{m}+C_{Y}^{m}}\label{dVwdt}\\
-&\frac{dC_{Na}^m}{dt}=\frac{Ht}{1 - Ht}\left(C_{Na}^m-\frac{dQ_{Na}}{dt}\right)\label{dCmNadt}\\
-&\frac{dC_{K}^m}{dt}=\frac{Ht}{1 - Ht}\left(C_{K}^m-\frac{dQ_{K}}{dt}\right)\label{dCmKdt}\\
-&\frac{dC_{A}^m}{dt}=\frac{Ht}{1 - Ht}\left(C_{A}^m-\frac{dQ_{A}}{dt}\right)\label{dCmAdt}\\
-&\frac{dC_{HB}^m}{dt}=\frac{Ht}{1 - Ht}\left(C_{HB}^m-\frac{dQ_{H}}{dt}\right)\label{dCmHBdt}\\
-&\frac{dC_{B}^m}{dt}=\frac{Ht}{1 - Ht}\,C_{B}^m\label{dCmBadt}\\
-&\frac{dC_{Y}^m}{dt}=\frac{Ht}{1 - Ht}\,C_{Y}^m\label{dCmYdt}\\
+&\frac{dQ_{Na}}{dt}=\Phi_{Na}=\Phi_{Na}^{P}+\Phi_{Na}^{L}+\Phi_{Na}^{G}+\Phi_{Na}^{Co}\label{eq:dQNadt}\\
+&\frac{dQ_K}{dt}=\Phi_{K}=\Phi_{K}^{P}+\Phi_{K}^{L}+\Phi_{K}^{G}+\Phi_{K}^{Co}\label{eq:dQKdt}\\
+&\frac{dQ_A}{dt}=\Phi_{A}=\Phi_{A}^{G}+\Phi_{A}^{HA}+\Phi_{A}^{Co}\label{eq:dQAdt}\\
+&\frac{dQ_H}{dt}=\Phi_{H}=\Phi_{H}^{HA}\label{deq:QHdt}\\
+&\frac{dV_w}{dt}= \frac{\dfrac{dQ_Na}{dt}+\dfrac{dQ_K}{dt}+\dfrac{dQ_A}{dt}}{C_{Na}^{m}+C_{K}^{m}+C_{A}^{m}+C_{B}^{m}+C_{Y}^{m}}\label{eq:dVwdt}\\
+&\frac{dC_{Na}^m}{dt}=\frac{Ht}{1 - Ht}\left(C_{Na}^m-\frac{dQ_{Na}}{dt}\right)\label{eq:dCmNadt}\\
+&\frac{dC_{K}^m}{dt}=\frac{Ht}{1 - Ht}\left(C_{K}^m-\frac{dQ_{K}}{dt}\right)\label{eq:dCmKdt}\\
+&\frac{dC_{A}^m}{dt}=\frac{Ht}{1 - Ht}\left(C_{A}^m-\frac{dQ_{A}}{dt}\right)\label{eq:dCmAdt}\\
+&\frac{dC_{HB}^m}{dt}=\frac{Ht}{1 - Ht}\left(C_{HB}^m-\frac{dQ_{H}}{dt}\right)\label{eq:dCmHBdt}\\
+&\frac{dC_{B}^m}{dt}=\frac{Ht}{1 - Ht}\,C_{B}^m\label{eq:dCmBadt}\\
+&\frac{dC_{Y}^m}{dt}=\frac{Ht}{1 - Ht}\,C_{Y}^m\label{eq:dCmYdt}\\
 \end{empheq}
 
 \subsection{Expliquation des formules du système d'équations différentielles}
