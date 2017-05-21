@@ -192,7 +192,7 @@ Concentration extra-cellulaire de H (dont on a besoin pour déterminer $FluxHA$)
 &\frac{dQ_K}{dt}=\Phi_{K}=\Phi_{K}^{P}+\Phi_{K}^{L}+\Phi_{K}^{G}+\Phi_{K}^{Co}\label{eq:dQKdt}\\
 &\frac{dQ_A}{dt}=\Phi_{A}=\Phi_{A}^{G}+\Phi_{A}^{HA}+\Phi_{A}^{Co}\label{eq:dQAdt}\\
 &\frac{dQ_H}{dt}=\Phi_{H}=\Phi_{H}^{HA}\label{eq:dQHdt}\\
-&\frac{dV_w}{dt}= \frac{\dfrac{dQ_Na}{dt}+\dfrac{dQ_K}{dt}+\dfrac{dQ_A}{dt}}{C_{Na}^{m}+C_{K}^{m}+C_{A}^{m}+C_{B}^{m}+C_{Y}^{m}}\label{eq:dVwdt}\\
+&\frac{dV_w}{dt}= \frac{\dfrac{dQ_{Na}}{dt}+\dfrac{dQ_K}{dt}+\dfrac{dQ_A}{dt}}{C_{Na}^{m}+C_{K}^{m}+C_{A}^{m}+C_{B}^{m}+C_{Y}^{m}}\label{eq:dVwdt}\\
 &\frac{dC_{Na}^m}{dt}=\frac{Ht}{1 - Ht}\left(C_{Na}^m\,\dfrac{dV_w}{dt}-\frac{dQ_{Na}}{dt}\right)\label{eq:dCmNadt}\\
 &\frac{dC_{K}^m}{dt}=\frac{Ht}{1 - Ht}\left(C_{K}^m\,\dfrac{dV_w}{dt}-\frac{dQ_{K}}{dt}\right)\label{eq:dCmKdt}\\
 &\frac{dC_{A}^m}{dt}=\frac{Ht}{1 - Ht}\left(C_{A}^m\,\dfrac{dV_w}{dt}-\frac{dQ_{A}}{dt}\right)\label{eq:dCmAdt}\\
@@ -203,7 +203,7 @@ Concentration extra-cellulaire de H (dont on a besoin pour déterminer $FluxHA$)
 
 \subsection{Expliquation des formules du système d'équations différentielles}
 
-Pour les variations des quantités intracellulaires des ions (équations~\eqref{eq:dQNadt} à ~\eqref{eq:dQHdt}) nous avons utilisé les formules de la publication de Virgilio L.LEW et Robert M.BOOKCHIN. Pour les variations des concentrations extracellulaires des ions (équations~\eqref{eq:dCmNadt} à ~\eqref{eq:dCmYdt}) nous avons utiliser leur formule :\\
+Pour les variations des quantités intracellulaires des ions (équations~\eqref{eq:dQNadt} à ~\eqref{eq:dQHdt}) nous avons utilisé les formules de la publication de Virgilio L.LEW et Robert M.BOOKCHIN. Pour les variations de concentrations extracellulaires des ions (équations~\eqref{eq:dCmNadt} à ~\eqref{eq:dCmYdt}) nous avons utilisé leur formule :\\
 \\
 $C_i^{m(t)}=C_i^{m(t-\Delta{t})}\,\left(1 + \dfrac{Ht}{1 - Ht}\,\dfrac{dV_w}{dt}\right) - \dfrac{Ht}{1 - Ht}\,\dfrac{dQ_{i}}{dt}$ ; \\
 \\
@@ -214,6 +214,30 @@ $C_i^{m(t)} - C_i^{m(t-\Delta{t})} = \dfrac{dC_{i}^m}{dt}$\\
 Puis en développant dans l'expression de la publication, on obtient :\\
 \\
 $\dfrac{dC_{i}^m}{dt}=\dfrac{Ht}{1 - Ht}\left(C_{i}^m\,\dfrac{dV_w}{dt}-\dfrac{dQ_{i}}{dt}\right)$
+
+
+Afin de  d'obtenir un système d'équations différentielles résoluble par odeint (bibliothèque scipy.integrate), nous avons exprimé la variation du volume intra-cellulaire indépendamment des variations de concentrations extra-cellulaire~\eqref{eq:dVwdt}. Pour cela nous avons d'abord dérivé la formule de la publication de Virgilio L.LEW et Robert M.Bookchin : \\
+
+
+\begin{equation}
+V_{w} = \dfrac{f_{Hb}Q_{Hb}+\sum Q_{i}}{\sum C_{i}^{m}}
+\end{equation}
+
+avec
+\begin{equation}
+\sum Q_{i} = Q_{Na}+Q_{K}+Q_{A}+Q_{Mg}+Q_{X} 
+\end{equation}
+
+et 
+\begin{equation}
+\sum C_{i}^m =C_{Na}^m +C_{K}^m +C_{A}^m +C_{B}^m +C_{Y}^m  
+\end{equation}
+
+La formule de variation extra-cellulaire du volume est donc :
+
+\begin{equation}
+\frac{dV_w}{dt}=
+\end{equation}
 
 
 \section{Implémentation}   
