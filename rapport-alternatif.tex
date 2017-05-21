@@ -130,16 +130,6 @@ E =  \frac{RT}{F}\ln{\left(\frac{\dfrac{P_{Na}^G\,Q_N}{V_w} + \dfrac{P_K^G\,Q_K}
 {C_{H}^{c,m}=\exp_{10}{\left(-pH^{c,m}\right)}}\Longleftrightarrow{pH^{c,m}=-\log{\left(-C_{H}^{c,m}\right)}}
 \end{equation}
 
-\begin{equation}
-f_{Hb}=1+b\,\frac{Q_{Hb}}{V_w }+{c}\left(\frac{Q_{Hb}}{V_w }\right)^2
-\end{equation}
-
-Pourcentage d'hémoglobine dans le sang (dont on a besoin pour déterminer les $dCmdt$)
-
-\begin{equation}
-Ht = Ht_0\,\exp{(V_w-V_w^0)}
-\end{equation}
-
 Concentration extra-cellulaire de H (dont on a besoin pour déterminer $FluxHA$)
 
 \begin{equation}
@@ -213,7 +203,24 @@ Concentration extra-cellulaire de H (dont on a besoin pour déterminer $FluxHA$)
 
 \subsection{Expliquation des formules du système d'équations différentielles}
 
+Pour les variations des quantités intracellulaires des ions (équations~\eqref{eq:dQNadt} à ~\eqref{eq:dQHdt}) nous avons utilisé les formules de la publication de Virgilio L.LEW et Robert M.BOOKCHIN. Pour les variations des concentrations extracellulaires des ions (équations~\eqref{eq:dCmNadt} à ~\eqref{eq:dCmYdt}) nous avons utiliser leur formule :\\
+\\
+$C_i^{m(t)}=C_i^{m(t-\Delta{t})}\,\left(1 + \dfrac{Ht}{1 - Ht}\,\dfrac{dV_w}{dt}\right) - \dfrac{Ht}{1 - Ht}\,\dfrac{dQ_{i}}{dt}$ ; \\
+\\
+où $C_i^{m(t)}$ correspond à la concentration extracellulaire de l'ion i à l'instant t et $\Delta{t}$ à une durée infiniment petite. On peut alors écrire :\\
+\\
+$C_i^{m(t)} - C_i^{m(t-\Delta{t})} = \dfrac{dC_{i}^m}{dt}$\\
+\\
+Puis en développant dans l'expression de la publication, on obtient :\\
+\\
+$\dfrac{dC_{i}^m}{dt}=\dfrac{Ht}{1 - Ht}\left(C_{i}^m\,\dfrac{dV_w}{dt}-\dfrac{dQ_{i}}{dt}\right)$
+
+
 \section{Implémentation}   
+
+Nous avons ensuite implémenté notre système d'équations différentielles en Python. Nous nous sommes servis de Python 3.4.2 pour l'écriture du code et son exécution. Pour résoudre notre système, nous avons utilisé le solveur \textit{odeint} provenant de la bibliothèque \textit{scipy.integrate}. Ce solveur résoud un système d'équations différentielles utilisant LSODA. LSODA (Livermore Solver for Ordinary Differential Equations) permet de résoudre des systèmes de la forme $\dfrac{dy}{dt}=f\left(t,y\right)$, en utilisant une Jacobienne "dense" ou "banded" lorsque le problème est raide, mais change automatiquement entre une méthode raide (Backward differentiation formula) et non-raide (Adams).
+Toutes les simulations ont été effectuées sous Ubuntu 16.04 et sous Windows 10, et dans l'interpréteur Python \textit{Ipython3}.
+   
 
 
 
