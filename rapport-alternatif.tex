@@ -122,15 +122,42 @@ Flux saturé de Na à travers la pompe Na: K                   & $\Phi_{max}^{Na
 
 \subsection{Quelques équations utiles pour la suite}
 
+\subsubsection*{Potentiel de membrane}
 \begin{equation}
 E =  \frac{RT}{F}\ln{\left(\frac{\dfrac{P_{Na}^G\,Q_N}{V_w} + \dfrac{P_K^G\,Q_K}{V_w} + P_A^G\,C_A^m}{P_{Na}^G\,C_{Na}^m + P_K^G\,C_K^m + \dfrac{P_A^G\,Q_A}{V_w}}\right)}
+\end{equation}\\
+
+Sous l'hypothèse que la somme des flux électro-diffusifs soit nulle :
+
+\begin{equation}
+\sum z_i\Phi_i = 0
 \end{equation}
 
-Concentration extra-cellulaire de H (dont on a besoin pour déterminer $FluxHA$)
-
+\subsubsection*{Concentration extra-cellulaire de H (dont on a besoin pour déterminer $\Phi{HA}$)}
 \begin{equation}
 {C_{H}^{c,m}=\exp_{10}{\left(-pH^{c,m}\right)}}\Longleftrightarrow{pH^{c,m}=-\log{\left(-C_{H}^{c,m}\right)}}
 \end{equation}
+
+\subsubsection*{Variation de $Ht$}
+D'après la publication de Virgilio L.LEW et Robert M.BOOKCHIN : 
+\begin{equation}
+V_s = 1-Ht \label{eq:Vs}
+\end{equation}
+
+et
+\begin{equation}
+\dfrac{dV_s}{dt} = -\dfrac{dV_w}{dt}Ht \label{eq:dVs}
+\end{equation}\\
+
+En dérivant~\eqref{eq:Vs}, on obtient donc que les variations de $Ht$ et $V_s$ sont opposées :
+\begin{equation}
+\dfrac{dV_s}{dt} = -\dfrac{Ht}{dt}
+\end{equation} \\
+
+Sachant cela et en s'appuyant sur l'équation~\eqref{eq:dVs}, on en déduit que :
+\begin{equation}
+Ht = Ht_0\,\exp{(V_w-V_w^0)} \label{eq:Ht} 
+\end{equation}\\
 
 \subsection{Equations liées aux flux}
 \subsubsection*{Équations des différents flux}
