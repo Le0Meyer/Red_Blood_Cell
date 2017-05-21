@@ -135,15 +135,10 @@ kHA     = 10**9		# 1
 #1000 * 10**(-7.4), 5.86, 10., 10.])
 ## CmH,			   CmHB, CmB, CmY)
 # (				QNa,	QK,			QA,			QH,						 Vw,  CmNa,CmK, CmA,
-#y0  = np.array([10 * Vw0, 140 * Vw0, 95 * Vw0, 1000 * 10**(-7.26) * Vw0, Vw0, 140., 5., 130.9,
-#5.86, 10., 10.])
+y0  = np.array([10 * Vw0, 140 * Vw0, 95 * Vw0, 1000 * 10**(-7.26) * Vw0, Vw0, 140., 5., 130.9,5.86, 10., 10.])
 # CmHB, CmB, CmY)
 
-## CmH,			   CmHB, CmB, CmY)
-# (				QNa,	QK,			QA,			QH,						 Vw,  CmNa,CmK, CmA,
-y0  = np.array([10 * Vw0, 140 * Vw0, 95 * Vw0,  1000 * 10**(-7.26) * Vw0, Vw0, 140., 5., 5.,
-5.86, 10., 135.9, 38.5])
-# CmHB, CmB, CmY, Q_)
+
 
 
 t   = np.linspace(0.,1.,1001)
