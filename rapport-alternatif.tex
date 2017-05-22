@@ -81,7 +81,9 @@ Concentration de l'espèce $i$ dans le cytoplasme                           & $C
 Concentration de l'espèce $i$ dans le milieu extracellulaire               & $C_{i}^{m}$              & $mmol.l^{-1}$       \\
 pH intracellulaire                                                     & $pH^c$                                         \\
 pH extracellulaire                                                     & $pH^m$                                         \\
-Volume du cytoplasme dans un litre de solution de cellules compactées & $V_w$                    & $l.loc^{-1}$        \\
+Volume de cytoplasme dans un litre de solution de cellules compactées \footnotemark[1]	& $V_w$ 			 & $l.loc^{-1}$      \\
+Volume d'hématocrite dans un litre de sang (taux d'hématocrite)             & $Ht$          & $l.l^{-1}$                   \\
+Volume de liquide extracellulaire dans un litre de sang                     & $V_w$                    & $l.l^{-1}$        \\
 Flux total de l'espèce $i$ (nécessairement perméant)                       & $\Phi_i$                 & $mmol.loc^{-1}.h^{-1}$\\
 Flux partiel à travers la pompe Na: K de l'espèce $i$                      & $\Phi_{i}^{P}$           & $mmol.loc^{-1}.h^{-1}$\\
 Flux partiel lié à la diffusion de l'espèce $i$                             & $\Phi_{i}^{L}$           & $mmol.loc^{-1}.h^{-1}$\\
@@ -90,14 +92,17 @@ Flux partiel à travers le co-transporteur Na: K: 2A de l'espèce $i$         & 
 Flux partiel à travers le co-transporteur H: A de l'espèce $i$              & $\Phi_{i}^{HA}$          & $mmol.loc^{-1}.h^{-1}$\\
 Coefficient osmotique de l'hémoglobine                                 & $f_{Hb}$                                       \\
 
-\end{tabular}
+\end{tabular}\\
+\\
+\\
+
+\footnotetext[1]{La solution de cellules compactées est une solution composée uniquement d'hématocrite, ne contenant pas de liquide extracellulaire} 
 
 
 
 \begin{tabular}{p{8cm}cr}
 
 \textbf{Paramètres}                                             & \textbf{Abréviation}     & \textbf{Unité}      \\
-Taux d'hématocrite                                             & $Ht$                                           \\
 Volume intracellulaire initial                                 & $V_{w}^{\left(0\right)}$                       \\
 Perméabilité de l'espèce $i$ lors de la diffusion                  & $P_{i}^{L}$              & $h^{-1}$            \\
 Perméabilité de l'espèce $i$ lors de l'électro-diffusion            & $P_{i}^{G}$              & $h^{-1}$            \\
@@ -136,7 +141,7 @@ Sous l'hypothèse que la somme des flux électro-diffusifs soit nulle :
 \subsubsection*{Concentration extra-cellulaire de H (dont on a besoin pour déterminer $\Phi{HA}$)}
 \begin{equation}
 {C_{H}^{c,m}=\exp_{10}{\left(-pH^{c,m}\right)}}\Longleftrightarrow{pH^{c,m}=-\log{\left(-C_{H}^{c,m}\right)}}
-\end{equation}
+\end{equation}\label{eq:pH}
 
 \subsubsection*{Variation de $Ht$}
 D'après la publication de Virgilio L.LEW et Robert M.BOOKCHIN : 
