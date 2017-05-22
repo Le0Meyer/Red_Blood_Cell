@@ -138,6 +138,41 @@ Sous l'hypothèse que la somme des flux électro-diffusifs soit nulle :
 \sum z_i\Phi_{i}^G = 0\label{eq:FLuxG}
 \end{equation}
 
+Afin de prendre en compte les variations du potentiel de membrane $E$ du globule rouge, il nous fallait une équation pour le calculer. Nous sommes donc partis de l'hypothèse que la somme des flux liés à l'électrodiffusion pondérés par la valence de l'ion du flux est égale à zéro (équation~\eqref{eq:FLuxG}). On a alors :
+
+\begin{equation}
+\Phi_{Na}^G+\Phi_{K}^G-\Phi_{A}^G=0
+\end{equation}
+
+On explicite alors les différents flux liés à l'électrodiffusion :
+
+\begin{multline}
+-P_{Na}^{G}\,\frac{FE}{RT}\left(\frac{\dfrac{Q_{Na}}{V_w}\,-\,{C_{Na}^{m}\exp{\dfrac{-FE}{RT}}}}{1 - \exp{\dfrac{-FE}{RT}}}\right)-P_{K}^{G}\,\frac{FE}{RT}\left(\dfrac{\dfrac{Q_{K}}{V_w}-{C_{K}^{m}\,\exp{\dfrac{-FE}{RT}}}}{1 - \exp{\dfrac{-FE}{RT}}}\right)\\
+-P_{A}^{G}\,\frac{FE}{RT}\left(\dfrac{\dfrac{Q_{A}}{V_w}\,-\,{C_{K}^{m}\exp{\dfrac{+FE}{RT}}}}{1 - \exp{\dfrac{+FE}{RT}}}\right)=0
+\end{multline}
+
+On rammène tout au même dénominateur et on simplifie par le facteur commun différent de $0$ :
+
+\begin{multline}
+-P_{Na}^{G}\,\frac{FE}{RT}\left(\frac{\dfrac{Q_{Na}}{V_w}\,-\,{C_{Na}^{m}\exp{\dfrac{-FE}{RT}}}}{1 - \exp{\dfrac{-FE}{RT}}}\right)-P_{K}^{G}\,\frac{FE}{RT}\left(\dfrac{\dfrac{Q_{K}}{V_w}-{C_{K}^{m}\,\exp{\dfrac{-FE}{RT}}}}{1 - \exp{\dfrac{-FE}{RT}}}\right)\\
++P_{A}^{G}\,\frac{FE}{RT}\left(\dfrac{\dfrac{Q_{A}}{V_w}\exp{\dfrac{-FE}{RT}}\,-\,C_{A}^{m}}{1 - \exp{\dfrac{-FE}{RT}}}\right)=0
+\end{multline}
+
+
+\begin{equation}
+-P_{Na}^{G}\,\dfrac{Q_{Na}}{V_w}-P_{K}^{G}\,\dfrac{Q_{K}}{V_w}-P_{A}^{G}\,C_{A}^{m}+P_{Na}^{G}\,C_{Na}^{m}\exp{\dfrac{-FE}{RT}}+P_{K}^{G}\,C_{K}^{m}\,\exp{\dfrac{-FE}{RT}}+P_{A}^{G}\,\dfrac{Q_{A}}{V_w}\exp{\dfrac{-FE}{RT}}=0
+\end{equation}
+
+Enfin, on isole $E$ pour obtenir l'équation finale :
+
+\begin{equation}
+\exp{\dfrac{-FE}{RT}}=\dfrac{P_{Na}^{G}\,\dfrac{Q_{Na}}{V_w}+P_{K}^{G}\,\dfrac{Q_{K}}{V_w}+P_{A}^{G}\,C_{A}^{m}}{P_{Na}^{G}\,C_{Na}^{m}+P_{K}^{G}\,C_{K}^{m}+P_{A}^{G}\,\dfrac{Q_{A}}{V_w}}
+\end{equation}
+
+\begin{equation*}
+E=\dfrac{-RT}{F}\,\left(\dfrac{P_{Na}^{G}\,\dfrac{Q_{Na}}{V_w}+P_{K}^{G}\,\dfrac{Q_{K}}{V_w}+P_{A}^{G}\,C_{A}^{m}}{P_{Na}^{G}\,C_{Na}^{m}+P_{K}^{G}\,C_{K}^{m}+P_{A}^{G}\,\dfrac{Q_{A}}{V_w}}\right)
+\end{equation*}
+
 \subsubsection*{Concentration extra-cellulaire de H (dont on a besoin pour déterminer $\Phi{HA}$)}
 \begin{equation}
 {C_{H}^{c,m}=\exp_{10}{\left(-pH^{c,m}\right)}}\Longleftrightarrow{pH^{c,m}=-\log{\left(-C_{H}^{c,m}\right)}}
@@ -299,41 +334,6 @@ On a finalement :
 
 \begin{equation*}
 \dfrac{dV_w}{dt}=\dfrac{\sum \dfrac{dQ_i}{dt}}{\sum C_{i}^m}
-\end{equation*}
-
-Afin de prendre en compte les variations du potentiel de membrane $E$ du globule rouge, il nous fallait une équation pour le calculer. Nous sommes donc partis de l'hypothèse que la somme des flux liés à l'électrodiffusion pondérés par la valence de l'ion du flux est égale à zéro (équation~\eqref{eq:FLuxG}). On a alors :
-
-\begin{equation}
-\Phi_{Na}^G+\Phi_{K}^G-\Phi_{A}^G=0
-\end{equation}
-
-On explicite alors les différents flux liés à l'électrodiffusion :
-
-\begin{multline}
--P_{Na}^{G}\,\frac{FE}{RT}\left(\frac{\dfrac{Q_{Na}}{V_w}\,-\,{C_{Na}^{m}\exp{\dfrac{-FE}{RT}}}}{1 - \exp{\dfrac{-FE}{RT}}}\right)-P_{K}^{G}\,\frac{FE}{RT}\left(\dfrac{\dfrac{Q_{K}}{V_w}-{C_{K}^{m}\,\exp{\dfrac{-FE}{RT}}}}{1 - \exp{\dfrac{-FE}{RT}}}\right)\\
--P_{A}^{G}\,\frac{FE}{RT}\left(\dfrac{\dfrac{Q_{A}}{V_w}\,-\,{C_{K}^{m}\exp{\dfrac{+FE}{RT}}}}{1 - \exp{\dfrac{+FE}{RT}}}\right)=0
-\end{multline}
-
-On rammène tout au même dénominateur et on simplifie par le facteur commun différent de $0$ :
-
-\begin{multline}
--P_{Na}^{G}\,\frac{FE}{RT}\left(\frac{\dfrac{Q_{Na}}{V_w}\,-\,{C_{Na}^{m}\exp{\dfrac{-FE}{RT}}}}{1 - \exp{\dfrac{-FE}{RT}}}\right)-P_{K}^{G}\,\frac{FE}{RT}\left(\dfrac{\dfrac{Q_{K}}{V_w}-{C_{K}^{m}\,\exp{\dfrac{-FE}{RT}}}}{1 - \exp{\dfrac{-FE}{RT}}}\right)\\
-+P_{A}^{G}\,\frac{FE}{RT}\left(\dfrac{\dfrac{Q_{A}}{V_w}\exp{\dfrac{-FE}{RT}}\,-\,C_{A}^{m}}{1 - \exp{\dfrac{-FE}{RT}}}\right)=0
-\end{multline}
-
-
-\begin{equation}
--P_{Na}^{G}\,\dfrac{Q_{Na}}{V_w}-P_{K}^{G}\,\dfrac{Q_{K}}{V_w}-P_{A}^{G}\,C_{A}^{m}+P_{Na}^{G}\,C_{Na}^{m}\exp{\dfrac{-FE}{RT}}+P_{K}^{G}\,C_{K}^{m}\,\exp{\dfrac{-FE}{RT}}+P_{A}^{G}\,\dfrac{Q_{A}}{V_w}\exp{\dfrac{-FE}{RT}}=0
-\end{equation}
-
-Enfin, on isole $E$ pour obtenir l'équation finale :
-
-\begin{equation}
-\exp{\dfrac{-FE}{RT}}=\dfrac{P_{Na}^{G}\,\dfrac{Q_{Na}}{V_w}+P_{K}^{G}\,\dfrac{Q_{K}}{V_w}+P_{A}^{G}\,C_{A}^{m}}{P_{Na}^{G}\,C_{Na}^{m}+P_{K}^{G}\,C_{K}^{m}+P_{A}^{G}\,\dfrac{Q_{A}}{V_w}}
-\end{equation}
-
-\begin{equation*}
-E=\dfrac{-RT}{F}\,\left(\dfrac{P_{Na}^{G}\,\dfrac{Q_{Na}}{V_w}+P_{K}^{G}\,\dfrac{Q_{K}}{V_w}+P_{A}^{G}\,C_{A}^{m}}{P_{Na}^{G}\,C_{Na}^{m}+P_{K}^{G}\,C_{K}^{m}+P_{A}^{G}\,\dfrac{Q_{A}}{V_w}}\right)
 \end{equation*}
 
 
