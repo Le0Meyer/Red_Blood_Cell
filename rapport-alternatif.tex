@@ -13,6 +13,8 @@
 \usepackage[T1]{fontenc}      % Police contenant les caractères français
 \usepackage[english,french]{babel}  % Placez ici une liste de langues, la dernière étant la langue principale
 \usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{float}
 \usepackage{empheq}
 \usepackage{hyperref}
 
@@ -132,7 +134,7 @@ Flux saturé de Na à travers la pompe Na: K                   & $\Phi_{max}^{Na
 E=\dfrac{-RT}{F}\,\left(\dfrac{P_{Na}^{G}\,\dfrac{Q_{Na}}{V_w}+P_{K}^{G}\,\dfrac{Q_{K}}{V_w}+P_{A}^{G}\,C_{A}^{m}}{P_{Na}^{G}\,C_{Na}^{m}+P_{K}^{G}\,C_{K}^{m}+P_{A}^{G}\,\dfrac{Q_{A}}{V_w}}\right)
 \end{equation}\\
 
-Sous l'hypothèse que la somme des flux électro-diffusifs soit nulle :
+Sous l'hypothèse que la somme des flux électro-diffusifs est nulle :
 
 \begin{equation}
 \sum z_i\Phi_{i}^G = 0\label{eq:FLuxG}
@@ -345,16 +347,144 @@ Toutes les simulations ont été effectuées sous Ubuntu 16.04 et sous Windows 1
 
 
 
+\section{Application à un cas concret}
+
+Afin de tester notre modèle, nous avons reproduit un des cas présenté dans la publication de Virgilio L.LEW et Robert M.BOOKCHIN ("Effect of a large and sudden increase in the cell K permeability in low-K media", p.69). Les conditions initiales sont les suivantes :\\
 
 
+\begin{tabular}{p{5cm}lr}
+\textbf{Paramètres}                                                   & \textbf{Valeur} \\
+\\
+$PhiMaxNa$ & $8.99$ $mmol.loc^{-1}.h^{-1}$    \\
+$d$ & $1.05$   \\
+$f_{Hb}$ & $2.78$    \\
+$Q_{Hb}$ & $5$ $mmol.loc^{-1}$   \\
+$Q_{X}$ & $19.2$ $mmol.loc^{-1}$     \\
+$KB$ & $10^{-4.55}$ $mmol.loc^{-1}$   \\
+$PLNa$ & $0.0020$ $h^{-1}$   \\
+$PLK$ & $0.0013$	 $h^{-1}$   \\
+$PGNa$ & $0.0151$ $h^{-1}$   \\
+$PGK$ & $0.0138 .10^4$ $h^{-1}$   \\
+$kCo$ & $10^{-6}$  \\
+$kHA$ & $10^{9}$  \\
 
-\section{Application à des cas concrets}     
 
-\subsection{Cas 1} 
+\end{tabular}\\
+\\
+\\
 
-\subsection{Cas 2} 
+\begin{tabular}{p{5cm}lr}
+\textbf{Variables à l'état initial}                                                   & \textbf{Valeur} \\
+\\
+$Q_{Na}$ & $7$ $mmol.loc^{-1}$   \\
+$Q_{K}$  & $98$ $mmol.loc^{-1}$     \\
+$Q_{A}$ & $66.5$ $mmol.loc^{-1}$ \\
+$Q_{H}$ & $700 . 10^{-7.26}$ $mmol.loc^{-1}$    \\
+$V_w$ & $0.7$   \\
+$C^m_{Na}$ & $140$ $mmol.l^{-1}$     \\
+$C^m_K$  & $5$ $mmol.l^{-1}$   \\
+$C^m_A$   & $131$ $mmol.l^{-1}$    \\
+$C^m_{HB}$  & $5.86$ $mmol.l^{-1}$      \\
+$C^m_{B}$  & $10$ $mmol.l^{-1}$      \\
+$C^m_{Y}$  & $10$ $mmol.l^{-1}$     \\
+$Ht$ & $0.1$   \\
 
-\section{Les limites du modèle}
+\end{tabular}\\
+\\
+
+\textit{NB : Ht est une variable mais elle n'intervient pas dans le système d'équations différentielles, car sa valeur peut être calculée directement à l'aide de celle de $V_w$.}\\
+\\
+
+En choisissant un intervalle de temps d'une heure et en faisant varier $PGA$ entre 0.2 et 200 $h^{-1}$, nous obtenons les résultats suivants :
+
+\begin{figure}[H]
+\centering 
+\includegraphics[width=1.1\textwidth]{original_hum.png}
+\caption{Variation de $Q_{A}$, $Q_{K}$, $pH^{c}$, $pH^{m}$, $E$ et $V_{w}$ en fonction du temps.\newline{Légende de $PGA$ : bleu foncé = 0.2 $h^{-1}$, vert = 2 $h^{-1}$, rouge = 20 $h^{-1}$, bleu clair = 200 $h^{-1}$.}}
+\end{figure} 
+
+ 
+
+
+Ces courbes sont très similaires à celles obtenues dans la publication, néanmoins on remarque que deux valeurs diffèrent légèrement. D'abord la valeur seuil de $\frac{V_w}{V_w^{(0)}}$ devrait se situer aux alentours de 0.63, ensuite la valeur initiale de E est légèrement trop haute pour le cas $PGA = 0.2\,h^{-1}$ : elle devrait se situer à environ -82 mV. Les tendances générales sont donc plutôt bonnes, si on ne tient pas compte du $pH^m$.\\
+
+Le $pH^m$ est la seule variable à ne pas du tout suivre la tendance décrite dans la publication : en se référant à notre modèle, $pH^m$ varie de manière pratiquement négligeable (il apparaît constant sur le graphique, à l'échelle de la variation de $pH^m$), alors qu'il semble être le parfait symétrique vertical de $pH^c$ d'après Virgilio L.LEW et Robert M.BOOKCHIN. Afin de résoudre ce problème, nous avons mis au point différentes versions de notre programme, correspondant chacune à une hypothèse de base.
+
+
+\section{Différentes versions du code}     
+
+\subsection{Avec et sans solution tampon dans le milieu extérieur} 
+
+Plusieurs arguments semblent être en faveur d'un $pH^m$ variant peu. Tout d'abord la solution extra-cellulaire est définie comme une solution tampon, c'est à dire qu'elle a pour rôle de stabiliser le $pH^m$. Cette solution tampon est matérialisée dans notre modèle par l'espèce chimique $B$ (forme non protonisée) et $HB$ (forme protonisée du tampon). Elle atténue les variations de $H^+$ en se liant ou non avec celui-ci suivant les conditions.\\
+
+Un deuxième argument est que dans notre cas, $Ht$ est fixé au départ à une valeur de 0.1. Cela signifie que le volume extracellulaire est neuf fois plus important que le volume intracellulaire, donc une petite variation de la quantité d'ions hydrogène aura neuf fois plus d'impact en terme de variation de concentration, dans le compartiment intracellulaire que extracellulaire. Cette tendance devrait pouvoir se lire dans le pH, qui devrait varier plus faiblement dans le milieu extracellulaire.\\
+
+Afin de vérifier cette seconde hypothèse, nous avons réécrit le modèle sans tenir compte de la solution tampon. Dans un soucis de clarté, nous avons aussi fixé $PGA$ à $2\,h^{-1}$.\\
+
+Le second modèle ne considérant pas la solution tampon, une hypothèse légitime consistait à définir la quantité totale d'ions $H^+$ dans le modèle comme une constante. \\
+
+\begin{equation}
+Q_{tot H} \,= \,C^m_H V_s + Q_H Ht \,=\, C^{m(0)}_H V_s^{(0)} + Q_H^{(0)} Ht^{(0)}
+\end{equation} \\
+
+L'expression de $C^m_H$ devient donc :
+
+\begin{equation}
+C^m_H = \frac{Q_{tot H}-Q_H Ht}{V_s} 
+\end{equation} 
+
+Et celle de $pH^m$, d'après l'équation~\eqref{eq:pH} :
+
+\begin{equation}
+pH^m = -\log\left(\frac{Q_{tot H}-Q_H Ht}{V_s}\right)
+\end{equation} \\
+
+A l'aide de ces deux versions, nous avons obtenus les graphiques suivant : 
+
+\begin{figure}[H]
+\centering 
+\includegraphics[width=1.1\textwidth]{sans_sol_tampon.png}
+\caption{Version modifiée du code omettant la solution tampon.}
+\end{figure} 
+
+\begin{figure}[H]
+\centering 
+\includegraphics[width=1.1\textwidth]{avec_sol_tampon.png}
+\caption{Version du code initiale, considérant la solution tampon.}
+\end{figure} 
+
+
+Comme nous l'attendions, dans la version du code modifiée nous retrouvons une variation du $pH^m$ de plus faible amplitude que celle de $pH^c$ et en sens contraire. Cette petite variation sera encore plus atténuée en présence de solution tampon, il semble donc normal qu'elle soit pratiquement invisible dans la version du code initiale.\\
+
+Les autres variables gardent un comportement inchangé, mis à part la quantité intracellulaire de $H^+$. En effet, en supprimant la solution tampon nous modifions l'équilibre des ions hydrogènes. Les ions $H^+$ qui ont ici tendance à rentrer dans le globule rouge, formeront un flux d'autant plus important que la concentration extra-cellulaire $C_H^m$ est importante. On observe que la solution tampon agit dans notre cas afin d'éviter que le milieu extracellaire ne devienne trop basique, elle a donc tendance à libérer des ions $H^+$ et de ce fait, augmenter la concentration d'ions hydrogènes dans la solution extracellulaire. Par conséquent, le flux d'ions H+ est alors plus important, et la variation de $Q_H$ plus forte en présence de la solution tampon.\\
+
+L'ensemble de nos résultats semblant en adéquation avec les réalités biologiques, on peut supposer que la version originale de notre modèle reflète réellement l'équilibre atteint au sein du globule rouge, sous les conditions que nous avons définies.\\
+
+\subsection{En considérant $f_{Hb}$ variable} 
+
+Dans un premier temps afin de simplifier la mise en équation du modèle, nous avons considéré $f_{Hb}$ constant ($f_{Hb}$ est le coefficient osmotique de l'hémoglobine). En réalité, cette quantité varie et est définie dans la publication de Virgilio L.LEW et Robert M.BOOKCHIN de la façon suivante:
+
+\begin{equation}
+f_{Hb}=1+b\,\frac{Q_{Hb}}{V_w }+{c}\left(\frac{Q_{Hb}}{V_w }\right)^2
+\end{equation}
+
+
+Dans une troisième version du code, nous avons remplacé $f_{Hb}$ par sa vraie expression. La valeur des différentes constantes est détaillée dans le tableau ci-dessous, et $PGA$ a encore une fois été fixé à $2\,h^{-1}$. Les résultats obtenus sont présentés dans la figure ci-contre.\\ 
+\\
+
+\begin{tabular}{p{3cm}lr}
+\textbf{Paramètres}                                                   & \textbf{Valeur} \\
+$b$ & $0.0645$    \\
+$c$ & $0.0258$   \\
+\end{tabular}
+
+\begin{figure}[H]
+\centering 
+\includegraphics[width=1.1\textwidth]{avec_fhb.png}
+\caption{Version modifiée du code, avec $f_{Hb}$ variable.}
+\end{figure} 
+
+Si les tendances sont globalement les mêmes, on  observe toutefois des quantités physico-chimique qui ne se stabilisent que très rarement. Cette observation va à l'encontre des résultats de la publication de Virgilio L.LEW et Robert M.BOOKCHIN, ainsi que des attentes d'un tel système biologique. Nous avons donc préféré conserver la version initiale du code, plus représentative des résultats théoriques attendus.
 
 
 \section{Conclusion} 
