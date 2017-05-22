@@ -135,7 +135,7 @@ E=\dfrac{-RT}{F}\,\left(\dfrac{P_{Na}^{G}\,\dfrac{Q_{Na}}{V_w}+P_{K}^{G}\,\dfrac
 Sous l'hypothèse que la somme des flux électro-diffusifs soit nulle :
 
 \begin{equation}
-\sum z_i\Phi_i = 0
+\sum z_i\Phi_i = 0\label{eq:FLuxG}
 \end{equation}
 
 \subsubsection*{Concentration extra-cellulaire de H (dont on a besoin pour déterminer $\Phi{HA}$)}
@@ -244,8 +244,11 @@ Puis en développant dans l'expression de la publication, on obtient :\\
 $\dfrac{dC_{i}^m}{dt}=\dfrac{Ht}{1 - Ht}\left(C_{i}^m\,\dfrac{dV_w}{dt}-\dfrac{dQ_{i}}{dt}\right)$
 \\
 
-Afin de  d'obtenir un système d'équations différentielles résoluble par odeint (bibliothèque scipy.integrate), nous avons exprimé la variation du volume intra-cellulaire indépendamment des variations de concentrations extra-cellulaire~\eqref{eq:dVwdt}. Pour cela nous avons d'abord réexprimé $V_w$ grâce à l'équation~\eqref{eq:Volume} et dérivé celle-ci : \\
+Afin de  d'obtenir un système d'équations différentielles résoluble par odeint (bibliothèque scipy.integrate), nous avons exprimé la variation du volume intra-cellulaire indépendamment des variations de concentrations extra-cellulaire~\eqref{eq:dVwdt}. Pour cela nous avons d'abord réexprimé $V_w$ grâce à l'équation de l'isotonicité et dérivé celle-ci :\\
 
+\begin{equation}
+f_{Hb}\,Q_{Hb}+Q_{Na}+Q_K+Q_A+Q_{Mg}+Q_X=V_w\left(C_{Na}^m +C_{K}^m +C_{A}^m +C_{B}^m +C_{Y}^m\right)\label{eq:Volume}
+\end{equation}
 
 \begin{equation}
 V_{w} = \dfrac{f_{Hb}Q_{Hb}+\sum Q_{i}}{\sum C_{i}^{m}}
