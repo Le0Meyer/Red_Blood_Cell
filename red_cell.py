@@ -9,11 +9,8 @@ def func(y,t,Ht,PhiMaxNa,PLNa,PLK,PGNa,PGK,PGA,F,R,T,kCo,kHA,d,fHb,QHb,QMg,QX,KB
 	# Le vecteur y est égal à (QNa,QK,QA,QH,Vw,CmNa,CmK,CmA,CmH,CmHB,CmB,CmY)
 	
 	
-#	#QNa,QK,QA,QH,Vw,CmNa,CmK,CmA,CmH,CmHB,CmB,CmY = y
-	#QNa,QK,QA,QH,Vw,CmNa,CmK,CmA,CmHB,CmB,CmY = y
-	
 	#QNa,QK,QA,QH,Vw,CmNa,CmK,CmA,CmH,CmHB,CmB,CmY = y
-	QNa,QK,QA,QH,Vw,CmNa,CmK,CmA,CmHB,CmB,CmY,Q_ = y
+	QNa,QK,QA,QH,Vw,CmNa,CmK,CmA,CmHB,CmB,CmY = y
 	
 	# Equation des différents flux
 	
@@ -54,9 +51,7 @@ def func(y,t,Ht,PhiMaxNa,PLNa,PLK,PGNa,PGK,PGA,F,R,T,kCo,kHA,d,fHb,QHb,QMg,QX,KB
 	dQAdt   = FluxGA  + FluxHA  + FluxCo
 	
 	dQHdt   = FluxHA
-	
-	dQ_dt   = dQHdt
-	
+		
 	
 	
 	# Variation du volume intra-cellulaire
@@ -88,7 +83,7 @@ def func(y,t,Ht,PhiMaxNa,PLNa,PLK,PGNa,PGK,PGA,F,R,T,kCo,kHA,d,fHb,QHb,QMg,QX,KB
 	
 	# Vecteur final dydt issu de y = (QNa,QK,QA,QH,Vw,CmNa,CmK,CmA,CmH,CmHB,CmB,CmY)
 #	dydt    = [dQNadt,dQKdt,dQAdt,dQHdt,dVwdt,dCmNadt,dCmKdt,dCmAdt,dCmHdt,dCmHBdt,dCmBdt,dCmYdt]
-	dydt    = [dQNadt,dQKdt,dQAdt,dQHdt,dVwdt,dCmNadt,dCmKdt,dCmAdt,dCmHBdt,dCmBdt,dCmYdt,dQ_dt]		
+	dydt    = [dQNadt,dQKdt,dQAdt,dQHdt,dVwdt,dCmNadt,dCmKdt,dCmAdt,dCmHBdt,dCmBdt,dCmYdt]		
 
 	return dydt
 
@@ -130,13 +125,9 @@ kCo     = 10**-6	# 1
 kHA     = 10**9		# 1
 
 # Vecteur initial
-## (				QNa,	QK,			QA,			QH,						 Vw,  CmNa,CmK, CmA,
-#y0  = np.array([10 * Vw0, 140 * Vw0, 95 * Vw0, 1000 * 10**(-7.26) * Vw0, Vw0, 140., 5., 131.,
-#1000 * 10**(-7.4), 5.86, 10., 10.])
-## CmH,			   CmHB, CmB, CmY)
-# (				QNa,	QK,			QA,			QH,						 Vw,  CmNa,CmK, CmA,
-y0  = np.array([10 * Vw0, 140 * Vw0, 95 * Vw0, 1000 * 10**(-7.26) * Vw0, Vw0, 140., 5., 130.9,5.86, 10., 10.])
-# CmHB, CmB, CmY)
+# (			QNa,	QK,	QA,		QH,		Vw,  CmNa,CmK, CmA,  CmHB, CmB, CmY)
+y0  = np.array([10 * Vw0, 140 * Vw0, 95 * Vw0,  1000 * 10**(-7.26) * Vw0, Vw0, 140., 5., 131.,5.86, 10., 10])
+#CmHB, CmB, CmY)
 
 
 
