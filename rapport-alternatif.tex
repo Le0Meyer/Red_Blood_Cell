@@ -353,8 +353,8 @@ On a finalement :
 
 \section{Implémentation}   
 
-Nous avons ensuite implémenté notre système d'équations différentielles en Python. Nous nous sommes servis de Python 3.4.2 pour l'écriture du code et son exécution. Pour résoudre notre système, nous avons utilisé le solveur \textit{odeint} provenant de la bibliothèque \textit{scipy.integrate}. Ce solveur résoud un système d'équations différentielles utilisant LSODA. LSODA (Livermore Solver for Ordinary Differential Equations) permet de résoudre des systèmes de la forme $\dfrac{dy}{dt}=f\left(t,y\right)$, en utilisant une Jacobienne "dense" ou "banded" lorsque le problème est raide, mais change automatiquement entre une méthode raide (Backward differentiation formula) et non-raide (Adams).
-Toutes les simulations ont été effectuées sous Ubuntu 16.04 et sous Windows 10, et dans l'interpréteur Python \textit{Ipython3}.
+Nous avons ensuite implémenté notre système d'équations différentielles en Python. Nous nous sommes servis de Python 3.4.2 pour l'écriture du code et son exécution. Pour résoudre notre système, nous avons utilisé le solveur \textit{odeint} provenant de la bibliothèque \textit{scipy.integrate}. Ce solveur résoud un système d'équations différentielles utilisant LSODA. LSODA (Livermore Solver for Ordinary Differential Equations) permet de résoudre des systèmes de la forme $\dfrac{dy}{dt}=f\left(t,y\right)$, en utilisant une Jacobienne dense ou à bande lorsque le problème est rigide, mais change automatiquement entre une méthode rigide (Backward differentiation formula) et non-rigide (Adams).
+Toutes les simulations ont été effectuées sous Ubuntu 16.04 et sous Windows 10, dans l'interpréteur Python \textit{Ipython3}.
    
 
 
