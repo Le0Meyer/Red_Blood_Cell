@@ -415,10 +415,7 @@ En choisissant un intervalle de temps d'une heure et en faisant varier $P_{A}^{G
 \caption{Variation de $Q_{A}$, $Q_{K}$, $pH^{c}$, $pH^{m}$, $E$ et $V_{w}$ en fonction du temps.}
 \end{figure} 
 
- 
-
-
-Ces courbes sont très similaires à celles obtenues dans la publication, néanmoins on remarque que deux valeurs diffèrent légèrement. D'abord la valeur seuil de $\frac{V_w}{V_w^{(0)}}$ devrait se situer aux alentours de 0.63, ensuite la valeur initiale de $E$ est légèrement trop haute pour le cas $P_{A}^{G} = 0.2\,h^{-1}$ : elle devrait se situer à environ -82 mV. Les tendances générales sont donc plutôt bonnes, si on ne tient pas compte du $pH^m$.\\
+Ces courbes sont très similaires à celles obtenues dans la publication, néanmoins on remarque que quelques valeurs diffèrent légèrement. D'abord la valeur seuil de $\frac{V_w}{V_w^{(0)}}$ devrait se situer aux alentours de 0.63, ensuite la valeur initiale de $E$ est légèrement trop haute pour le cas $P_{A}^{G} = 0.2\,h^{-1}$ : elle devrait se situer à environ -82 mV. Enfin la valeur seuil de $pH^c$ est trop faible ( elle est de 6.3, contre 6.9 dans la publication). Les tendances générales sont donc plutôt bonnes, si on ne tient pas compte du $pH^m$.\\
 
 Le $pH^m$ est la seule variable à ne pas du tout suivre la tendance décrite dans la publication : en se référant à notre modèle, $pH^m$ varie de manière pratiquement négligeable (il apparaît constant sur le graphique, à l'échelle de la variation de $pH^m$), alors qu'il semble être le parfait symétrique vertical de $pH^c$ d'après Virgilio L.LEW et Robert M.BOOKCHIN. Afin de résoudre ce problème, nous avons mis au point différentes versions de notre programme, correspondant chacune à une hypothèse de base.
 
@@ -496,7 +493,9 @@ $c$ & $0.0258$   \\
 \caption{Version modifiée du code, avec $f_{Hb}$ variable.}
 \end{figure} 
 
-Si les tendances sont globalement les mêmes, on  observe toutefois des quantités physico-chimiques qui ne se stabilisent que très rarement. Cette observation va à l'encontre des résultats de la publication de Virgilio L.LEW et Robert M.BOOKCHIN, ainsi que des attentes d'un tel système biologique. Nous avons donc préféré conserver la version initiale du code, plus représentative des résultats théoriques attendus.
+En rajoutant les variations de $f_{Hb}$, on remarque que les erreurs observées sur certaines des quantités physico-chimiques de la figure~\ref{original} sont atténuées, même si elles restent présentes (valeurs de $\frac{V_w}{V_w^{(0)}}$ et $pH^c$). \\
+
+La valeur de $f_{Hb}$ est elle aussi légèrement plus différente (6.7 contre 7.5 dans la publication).\\
 
 
 \section{Conclusion} 
