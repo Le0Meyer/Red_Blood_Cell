@@ -58,7 +58,7 @@ Afin de caractériser les flux à travers la membrane plasmique du globule rouge
 Sodium                                                            & ${Na}$   \\
 Potassium                                                         & $K$    \\
 Magnesium                                                         & ${Mg}$   \\
-Hydrogen                                                          & $H$    \\
+Hydrogène                                                          & $H$    \\
 Hémoglobine                                                       & ${Hb}$   \\
 Anion perméant                                                    & $A$    \\
 Anion imperméant intracellulaire considéré comme non protonisable & $X$    \\
@@ -77,19 +77,17 @@ Nous définissons ensuite les variables d'intérêt du système, où $i$ corresp
 
 \textbf{Variable}                                                      & \textbf{Abréviation}     & \textbf{Unité}      \\
 \\
-Quantité de l'espèce $i$ dans un litre de solution de cellules compactées  & $Q_i$                    & $mmol.loc^{-1}$     \\
-Charge net de l'ion imperméant intracellulaire                         & $Q_{(-)}$               & $mEq.loc^{-1}$      \\
-Concentration de l'espèce $i$ dans le cytoplasme                           & $C_{i}^{c}$              & $mmol.l^{-1}$       \\
+Quantité de l'espèce $i$ dans un litre de solution de cellules compactées \footnotemark[1]  & $Q_i$                    & $mmol.loc^{-1}$     \\
 Concentration de l'espèce $i$ dans le milieu extracellulaire               & $C_{i}^{m}$              & $mmol.l^{-1}$       \\
 pH intracellulaire                                                     & $pH^c$                                         \\
 pH extracellulaire                                                     & $pH^m$                                         \\
 Volume de cytoplasme dans un litre de solution de cellules compactées \footnotemark[1]	& $V_w$ 			 & $l.loc^{-1}$      \\
 Volume d'hématocrite dans un litre de sang (taux d'hématocrite)             & $Ht$          & $l.l^{-1}$                   \\
-Volume de liquide extracellulaire dans un litre de sang                     & $V_w$                    & $l.l^{-1}$        \\
+Volume de liquide extracellulaire dans un litre de sang                     & $V_s$                    & $l.l^{-1}$        \\
 Flux total de l'espèce $i$ (nécessairement perméant)                       & $\Phi_i$                 & $mmol.loc^{-1}.h^{-1}$\\
 Flux partiel à travers la pompe Na: K de l'espèce $i$                      & $\Phi_{i}^{P}$           & $mmol.loc^{-1}.h^{-1}$\\
 Flux partiel lié à la diffusion de l'espèce $i$                             & $\Phi_{i}^{L}$           & $mmol.loc^{-1}.h^{-1}$\\
-Flux partiel lié à l'électro-diffusion de l'espèce $i$                      & $\Phi_{i}^{G}$           & $mmol.loc^{-1}.h^{-1}$\\
+Flux partiel lié à l'électrodiffusion de l'espèce $i$                      & $\Phi_{i}^{G}$           & $mmol.loc^{-1}.h^{-1}$\\
 Flux partiel à travers le co-transporteur Na: K: 2A de l'espèce $i$         & $\Phi_{i}^{Co}$          & $mmol.loc^{-1}.h^{-1}$\\
 Flux partiel à travers le co-transporteur H: A de l'espèce $i$              & $\Phi_{i}^{HA}$          & $mmol.loc^{-1}.h^{-1}$\\
 Coefficient osmotique de l'hémoglobine                                 & $f_{Hb}$                                       \\
@@ -107,7 +105,7 @@ Coefficient osmotique de l'hémoglobine                                 & $f_{Hb
 \textbf{Paramètres}                                             & \textbf{Abréviation}     & \textbf{Unité}      \\
 Volume intracellulaire initial                                 & $V_{w}^{\left(0\right)}$                       \\
 Perméabilité de l'espèce $i$ lors de la diffusion                  & $P_{i}^{L}$              & $h^{-1}$            \\
-Perméabilité de l'espèce $i$ lors de l'électro-diffusion            & $P_{i}^{G}$              & $h^{-1}$            \\
+Perméabilité de l'espèce $i$ lors de l'électrodiffusion            & $P_{i}^{G}$              & $h^{-1}$            \\
 Constante de turnover du co-transport Na: K: 2A (Co)            & $k_{Co}$                                       \\
 Constante de turnover du co-transport H: A (HA)                 & $k_{HA}$                                       \\
 Valence de l'ion $i$                                             & $z_i$                                          \\
@@ -116,13 +114,12 @@ Constante des gaz parfaits                                     & $R$            
 Température absolue                                            & $T$                      & $K$                 \\
 pH isoélectrique de l'hémoglobine                              & $pI$                                           \\
 Constante de dissociation de la solution tampon B              & $K_B$                    & $mol.l^{-1}$        \\
-Charge négative nette de l'hémoglobine lorsque $pH^c = pI + 1$ & $a$  & $Eq.mol^{-1}$  \\
 Coefficients viriaux de l'équation de $f_{Hb}$                 & $b, c$                   &                     \\
 Facteur de compensation dans le co-transport Na: K: 2A          & $d$                      &                     \\
-Flux saturé de Na à travers la pompe Na: K                   & $\Phi_{max}^{Na}$        & $mmol.loc^{-1}.h^{-1}$ \\
+Flux saturé de Na à travers la pompe Na: K                   & $\Phi^{max}_{Na}$        & $mmol.loc^{-1}.h^{-1}$ \\
 
-\end{tabular}
-
+\end{tabular}\\
+\\
 
 
 \section{Équations constitutives}
@@ -131,10 +128,10 @@ Flux saturé de Na à travers la pompe Na: K                   & $\Phi_{max}^{Na
 
 \subsubsection*{Potentiel de membrane}
 \begin{equation}
-E=\dfrac{-RT}{F}\,\left(\dfrac{P_{Na}^{G}\,\dfrac{Q_{Na}}{V_w}+P_{K}^{G}\,\dfrac{Q_{K}}{V_w}+P_{A}^{G}\,C_{A}^{m}}{P_{Na}^{G}\,C_{Na}^{m}+P_{K}^{G}\,C_{K}^{m}+P_{A}^{G}\,\dfrac{Q_{A}}{V_w}}\right)
+E=\dfrac{-RT}{F}\,\ln\left(\dfrac{P_{Na}^{G}\,\dfrac{Q_{Na}}{V_w}+P_{K}^{G}\,\dfrac{Q_{K}}{V_w}+P_{A}^{G}\,C_{A}^{m}}{P_{Na}^{G}\,C_{Na}^{m}+P_{K}^{G}\,C_{K}^{m}+P_{A}^{G}\,\dfrac{Q_{A}}{V_w}}\right)
 \end{equation}\\
 
-Sous l'hypothèse que la somme des flux électro-diffusifs est nulle :
+Sous l'hypothèse que la somme des flux électrodiffusifs est nulle :
 
 \begin{equation}
 \sum z_i\Phi_{i}^G = 0\label{eq:FLuxG}
@@ -153,7 +150,7 @@ On explicite alors les différents flux liés à l'électrodiffusion :
 -P_{A}^{G}\,\frac{FE}{RT}\left(\dfrac{\dfrac{Q_{A}}{V_w}\,-\,{C_{K}^{m}\exp{\dfrac{+FE}{RT}}}}{1 - \exp{\dfrac{+FE}{RT}}}\right)=0
 \end{multline}
 
-On rammène tout au même dénominateur et on simplifie par le facteur commun différent de $0$ :
+On ramène tout au même dénominateur et on simplifie par le facteur commun différent de $0$ :
 
 \begin{multline}
 -P_{Na}^{G}\,\frac{FE}{RT}\left(\frac{\dfrac{Q_{Na}}{V_w}\,-\,{C_{Na}^{m}\exp{\dfrac{-FE}{RT}}}}{1 - \exp{\dfrac{-FE}{RT}}}\right)-P_{K}^{G}\,\frac{FE}{RT}\left(\dfrac{\dfrac{Q_{K}}{V_w}-{C_{K}^{m}\,\exp{\dfrac{-FE}{RT}}}}{1 - \exp{\dfrac{-FE}{RT}}}\right)\\
@@ -172,13 +169,13 @@ Enfin, on isole $E$ pour obtenir l'équation finale :
 \end{equation}
 
 \begin{equation*}
-E=\dfrac{-RT}{F}\,\left(\dfrac{P_{Na}^{G}\,\dfrac{Q_{Na}}{V_w}+P_{K}^{G}\,\dfrac{Q_{K}}{V_w}+P_{A}^{G}\,C_{A}^{m}}{P_{Na}^{G}\,C_{Na}^{m}+P_{K}^{G}\,C_{K}^{m}+P_{A}^{G}\,\dfrac{Q_{A}}{V_w}}\right)
+E=\dfrac{-RT}{F}\,\ln\left(\dfrac{P_{Na}^{G}\,\dfrac{Q_{Na}}{V_w}+P_{K}^{G}\,\dfrac{Q_{K}}{V_w}+P_{A}^{G}\,C_{A}^{m}}{P_{Na}^{G}\,C_{Na}^{m}+P_{K}^{G}\,C_{K}^{m}+P_{A}^{G}\,\dfrac{Q_{A}}{V_w}}\right)
 \end{equation*}
 
-\subsubsection*{Concentration extra-cellulaire de H (dont on a besoin pour déterminer $\Phi{HA}$)}
+\subsubsection*{Concentration extracellulaire de H (dont on a besoin pour déterminer $\Phi^{HA}$)}
 \begin{equation}
-{C_{H}^{c,m}=\exp_{10}{\left(-pH^{c,m}\right)}}\Longleftrightarrow{pH^{c,m}=-\log{\left(-C_{H}^{c,m}\right)}}
-\end{equation}\label{eq:pH}
+{C_{H}^{c,m}=\exp_{10}{\left(-pH^{c,m}\right)}}\Longleftrightarrow{pH^{c,m}=-\log{\left(-C_{H}^{c,m}\right)}}\label{eq:pH}
+\end{equation}
 
 \subsubsection*{Variation de $Ht$}
 D'après la publication de Virgilio L.LEW et Robert M.BOOKCHIN : 
@@ -193,7 +190,7 @@ et
 
 En dérivant~\eqref{eq:Vs}, on obtient donc que les variations de $Ht$ et $V_s$ sont opposées :
 \begin{equation}
-\dfrac{dV_s}{dt} = -\dfrac{Ht}{dt}
+\dfrac{dV_s}{dt} = -\dfrac{dHt}{dt}
 \end{equation} \\
 
 Sachant cela et en s'appuyant sur l'équation~\eqref{eq:dVs}, on en déduit que :
@@ -205,7 +202,7 @@ Ht = Ht_0\,\exp{(V_w-V_w^0)} \label{eq:Ht}
 \subsubsection*{Équations des différents flux}
 
 \begin{equation}
-\Phi_{Na}^{P}=-\Phi_{max}^{Na}\left(\frac{\dfrac{Q_{Na}}{V_w}}{\dfrac{Q_{Na}}{V_w} + 0.1\left(1+\dfrac{8.3\,Q_{K}}{V_w}\right)}\right)^3\left(\dfrac{C_{K}^{m}}{C_{K}^{m}+0.1\left(1+\dfrac{C_{Na}^{m}}{18}\right)}\right)^2
+\Phi_{Na}^{P}=-\Phi_{max}^{Na}\left(\frac{\dfrac{Q_{Na}}{V_w}}{\dfrac{Q_{Na}}{V_w} + 0.1\left(1+\dfrac{Q_{K}}{8.3\,V_w}\right)}\right)^3\left(\dfrac{C_{K}^{m}}{C_{K}^{m}+0.1\left(1+\dfrac{C_{Na}^{m}}{18}\right)}\right)^2
 \end{equation}
 
 \begin{equation}
@@ -220,7 +217,7 @@ Ht = Ht_0\,\exp{(V_w-V_w^0)} \label{eq:Ht}
 \Phi_{K}^{L}=-P_{K}^{L}\left(\frac{Q_{K}}{V_w}-C_{K}^{m}\right)
 \end{equation}
 
-\subsubsection*{Équations des flux électro-diffusifs}
+\subsubsection*{Équations des flux électrodiffusifs}
 
 \begin{equation}
 \Phi_{Na}^{G}=-P_{Na}^{G}\,\frac{FE}{RT}\left(\frac{\dfrac{Q_{Na}}{V_w}\,-\,{C_{Na}^{m}\exp{\dfrac{-FE}{RT}}}}{1 - \exp{\dfrac{-FE}{RT}}}\right)
@@ -244,13 +241,13 @@ Ht = Ht_0\,\exp{(V_w-V_w^0)} \label{eq:Ht}
 \Phi_{Na}^{Co}=\Phi_{K}^{Co}=\frac{\Phi_{A}^{Co}}{2}
 \end{equation}
 
-\subsubsection*{Équations du flux HA}
+\subsubsection*{Équation du flux HA}
 
 \begin{equation}
 \Phi_{H}^{HA}=\Phi_{A}^{HA}=-k_{HA}( \frac{Q_A\,Q_H}{V_w^2} - C_{A}^{m}\,C_{H}^{m})
 \end{equation}\\
 
-\subsection{Equations du système d'équations différentielles}
+\subsection{Système d'équations différentielles}
 
 \begin{empheq}[left=\empheqlbrace]{align}
 \frac{dQ_{Na}}{dt}&=\Phi_{Na}=\Phi_{Na}^{P}+\Phi_{Na}^{L}+\Phi_{Na}^{G}+\Phi_{Na}^{Co}\label{eq:dQNadt}\\
@@ -268,7 +265,7 @@ Ht = Ht_0\,\exp{(V_w-V_w^0)} \label{eq:Ht}
 
 \subsection{Expliquation des formules du système d'équations différentielles}
 
-Pour les variations des quantités intracellulaires des ions (équations~\eqref{eq:dQNadt} à ~\eqref{eq:dQHdt}) nous avons utilisé les formules de la publication de Virgilio L.LEW et Robert M.BOOKCHIN. Pour les variations de concentrations extracellulaires des ions (équations~\eqref{eq:dCmNadt} à ~\eqref{eq:dCmYdt}) nous avons utilisé leur formule :\\
+Pour les variations des quantités intracellulaires des ions (équations~\eqref{eq:dQNadt} à ~\eqref{eq:dQHdt}) nous avons utilisé les formules de la publication de Virgilio L.LEW et Robert M.BOOKCHIN. Pour les variations des concentrations extracellulaires des ions (équations~\eqref{eq:dCmNadt} à ~\eqref{eq:dCmYdt}) nous avons utilisé leur formule :\\
 \\
 $C_i^{m(t)}=C_i^{m(t-\Delta{t})}\,\left(1 + \dfrac{Ht}{1 - Ht}\,\dfrac{dV_w}{dt}\right) - \dfrac{Ht}{1 - Ht}\,\dfrac{dQ_{i}}{dt}$ ; \\
 \\
@@ -281,7 +278,7 @@ Puis en développant dans l'expression de la publication, on obtient :\\
 $\dfrac{dC_{i}^m}{dt}=\dfrac{Ht}{1 - Ht}\left(C_{i}^m\,\dfrac{dV_w}{dt}-\dfrac{dQ_{i}}{dt}\right)$
 \\
 
-Afin de  d'obtenir un système d'équations différentielles résoluble par odeint (bibliothèque scipy.integrate), nous avons exprimé la variation du volume intra-cellulaire indépendamment des variations de concentrations extra-cellulaire~\eqref{eq:dVwdt}. Pour cela nous avons d'abord réexprimé $V_w$ grâce à l'équation de l'isotonicité et dérivé celle-ci :\\
+Afin de  d'obtenir un système d'équations différentielles résoluble par \textit{odeint} (bibliothèque \textit{scipy.integrate}), nous avons exprimé la variation du volume intracellulaire indépendamment des variations des concentrations extracellulaires~\eqref{eq:dVwdt}. Pour cela nous avons d'abord réexprimé $V_w$ grâce à l'équation de l'isotonicité et dérivé celle-ci :\\
 
 \begin{equation}
 f_{Hb}\,Q_{Hb}+Q_{Na}+Q_K+Q_A+Q_{Mg}+Q_X=V_w\left(C_{Na}^m +C_{K}^m +C_{A}^m +C_{B}^m +C_{Y}^m\right)\label{eq:Volume}
@@ -299,9 +296,9 @@ avec
 et 
 \begin{equation}
 \sum C_{i}^m =C_{Na}^m +C_{K}^m +C_{A}^m +C_{B}^m +C_{Y}^m  
-\end{equation}
+\end{equation}\\
 
-La formule de variation extra-cellulaire du volume est donc :
+La formule de variation extracellulaire du volume est donc :
 
 \begin{equation}
 \dfrac{dV_w}{dt}=\dfrac{\left(\dfrac{dQ_{Na}}{dt}+\dfrac{dQ_K}{dt}+\dfrac{dQ_A}{dt}\right)\left(\sum C_{i}^m\right)-\left(f_{Hb}\,Q_{Hb}+\sum Q_{i}\right)\left(\sum \dfrac{dC_{i}^m}{dt}\right)}{\left(\sum C_{i}^m\right)^2}
@@ -311,7 +308,7 @@ en notant :
 
 \begin{equation}
 \sum \dfrac{dQ_i}{dt}=\dfrac{dQ_{Na}}{dt}+\dfrac{dQ_K}{dt}+\dfrac{dQ_A}{dt}
-\end{equation}
+\end{equation}\\
 
 On obtient alors :
 
@@ -336,7 +333,7 @@ On a finalement :
 
 \begin{equation*}
 \dfrac{dV_w}{dt}=\dfrac{\sum \dfrac{dQ_i}{dt}}{\sum C_{i}^m}
-\end{equation*}
+\end{equation*}\\
 
 
 \section{Implémentation}   
@@ -355,18 +352,18 @@ Afin de tester notre modèle, nous avons reproduit un des cas présenté dans la
 \begin{tabular}{p{5cm}lr}
 \textbf{Paramètres}                                                   & \textbf{Valeur} \\
 \\
-$PhiMaxNa$ & $8.99$ $mmol.loc^{-1}.h^{-1}$    \\
+$\Phi^{max}_{Na}$ & $8.99$ $mmol.loc^{-1}.h^{-1}$    \\
 $d$ & $1.05$   \\
 $f_{Hb}$ & $2.78$    \\
 $Q_{Hb}$ & $5$ $mmol.loc^{-1}$   \\
 $Q_{X}$ & $19.2$ $mmol.loc^{-1}$     \\
-$KB$ & $10^{-4.55}$ $mmol.loc^{-1}$   \\
-$PLNa$ & $0.0020$ $h^{-1}$   \\
-$PLK$ & $0.0013$	 $h^{-1}$   \\
-$PGNa$ & $0.0151$ $h^{-1}$   \\
-$PGK$ & $0.0138 .10^4$ $h^{-1}$   \\
-$kCo$ & $10^{-6}$  \\
-$kHA$ & $10^{9}$  \\
+$K_B$ & $10^{-4.55}$ $mmol.loc^{-1}$   \\
+$P^L_{Na}$ & $0.0020$ $h^{-1}$   \\
+$P^L_{K}$ & $0.0013$	 $h^{-1}$   \\
+$P^G_{Na}$ & $0.0151$ $h^{-1}$   \\
+$P^G_{K}$ & $0.0138 .10^4$ $h^{-1}$   \\
+$k_{Co}$ & $10^{-6}$  \\
+$k_{HA}$ & $10^{9}$  \\
 
 
 \end{tabular}\\
@@ -395,33 +392,33 @@ $Ht$ & $0.1$   \\
 \textit{NB : Ht est une variable mais elle n'intervient pas dans le système d'équations différentielles, car sa valeur peut être calculée directement à l'aide de celle de $V_w$.}\\
 \\
 
-En choisissant un intervalle de temps d'une heure et en faisant varier $PGA$ entre 0.2 et 200 $h^{-1}$, nous obtenons les résultats suivants :
+En choisissant un intervalle de temps d'une heure et en faisant varier $P_{GA}$ entre 0.2 et 200 $h^{-1}$, nous obtenons les résultats suivants :
 
 \begin{figure}[H]
 \centering 
 \includegraphics[width=1.1\textwidth]{original_hum.png}
-\caption{Variation de $Q_{A}$, $Q_{K}$, $pH^{c}$, $pH^{m}$, $E$ et $V_{w}$ en fonction du temps.\newline{Légende de $PGA$ : bleu foncé = 0.2 $h^{-1}$, vert = 2 $h^{-1}$, rouge = 20 $h^{-1}$, bleu clair = 200 $h^{-1}$.}}
+\caption{Variation de $Q_{A}$, $Q_{K}$, $pH^{c}$, $pH^{m}$, $E$ et $V_{w}$ en fonction du temps.\newline{Légende de $P_{GA}$ : bleu foncé = 0.2 $h^{-1}$, vert = 2 $h^{-1}$, rouge = 20 $h^{-1}$, bleu clair = 200 $h^{-1}$.}}
 \end{figure} 
 
  
 
 
-Ces courbes sont très similaires à celles obtenues dans la publication, néanmoins on remarque que deux valeurs diffèrent légèrement. D'abord la valeur seuil de $\frac{V_w}{V_w^{(0)}}$ devrait se situer aux alentours de 0.63, ensuite la valeur initiale de E est légèrement trop haute pour le cas $PGA = 0.2\,h^{-1}$ : elle devrait se situer à environ -82 mV. Les tendances générales sont donc plutôt bonnes, si on ne tient pas compte du $pH^m$.\\
+Ces courbes sont très similaires à celles obtenues dans la publication, néanmoins on remarque que deux valeurs diffèrent légèrement. D'abord la valeur seuil de $\frac{V_w}{V_w^{(0)}}$ devrait se situer aux alentours de 0.63, ensuite la valeur initiale de $E$ est légèrement trop haute pour le cas $P_{GA} = 0.2\,h^{-1}$ : elle devrait se situer à environ -82 mV. Les tendances générales sont donc plutôt bonnes, si on ne tient pas compte du $pH^m$.\\
 
 Le $pH^m$ est la seule variable à ne pas du tout suivre la tendance décrite dans la publication : en se référant à notre modèle, $pH^m$ varie de manière pratiquement négligeable (il apparaît constant sur le graphique, à l'échelle de la variation de $pH^m$), alors qu'il semble être le parfait symétrique vertical de $pH^c$ d'après Virgilio L.LEW et Robert M.BOOKCHIN. Afin de résoudre ce problème, nous avons mis au point différentes versions de notre programme, correspondant chacune à une hypothèse de base.
 
 
 \section{Différentes versions du code}     
 
-\subsection{Avec et sans solution tampon dans le milieu extérieur} 
+\subsection{Avec et sans solution tampon dans le milieu extracellulaire} 
 
-Plusieurs arguments semblent être en faveur d'un $pH^m$ variant peu. Tout d'abord la solution extra-cellulaire est définie comme une solution tampon, c'est à dire qu'elle a pour rôle de stabiliser le $pH^m$. Cette solution tampon est matérialisée dans notre modèle par l'espèce chimique $B$ (forme non protonisée) et $HB$ (forme protonisée du tampon). Elle atténue les variations de $H^+$ en se liant ou non avec celui-ci suivant les conditions.\\
+Plusieurs arguments semblent être en faveur d'un $pH^m$ variant peu. Tout d'abord la solution extracellulaire est définie comme une solution tampon, c'est à dire qu'elle a pour rôle de stabiliser le $pH^m$. Cette solution tampon est matérialisée dans notre modèle par l'espèce chimique $B$ (forme non protonisée) et $HB$ (forme protonisée du tampon). Elle atténue les variations de $H^+$ en se liant ou non avec celui-ci suivant les conditions.\\
 
 Un deuxième argument est que dans notre cas, $Ht$ est fixé au départ à une valeur de 0.1. Cela signifie que le volume extracellulaire est neuf fois plus important que le volume intracellulaire, donc une petite variation de la quantité d'ions hydrogène aura neuf fois plus d'impact en terme de variation de concentration, dans le compartiment intracellulaire que extracellulaire. Cette tendance devrait pouvoir se lire dans le pH, qui devrait varier plus faiblement dans le milieu extracellulaire.\\
 
-Afin de vérifier cette seconde hypothèse, nous avons réécrit le modèle sans tenir compte de la solution tampon. Dans un soucis de clarté, nous avons aussi fixé $PGA$ à $2\,h^{-1}$.\\
+Afin de vérifier cette seconde hypothèse, nous avons réécrit le modèle sans tenir compte de la solution tampon. Dans un soucis de clarté, nous avons aussi fixé $P_{GA}$ à $2\,h^{-1}$.\\
 
-Le second modèle ne considérant pas la solution tampon, une hypothèse légitime consistait à définir la quantité totale d'ions $H^+$ dans le modèle comme une constante. \\
+Le second modèle ne considérant pas la solution tampon, une hypothèse légitime consistait à définir la quantité totale d'ions $H^+$ comme une constante. \\
 
 \begin{equation}
 Q_{tot H} \,= \,C^m_H V_s + Q_H Ht \,=\, C^{m(0)}_H V_s^{(0)} + Q_H^{(0)} Ht^{(0)}
@@ -454,11 +451,11 @@ A l'aide de ces deux versions, nous avons obtenus les graphiques suivant :
 \end{figure} 
 
 
-Comme nous l'attendions, dans la version du code modifiée nous retrouvons une variation du $pH^m$ de plus faible amplitude que celle de $pH^c$ et en sens contraire. Cette petite variation sera encore plus atténuée en présence de solution tampon, il semble donc normal qu'elle soit pratiquement invisible dans la version du code initiale.\\
+Comme nous l'attendions, dans la version du code modifiée nous retrouvons une variation du $pH^m$ de plus faible amplitude que celle de $pH^c$ et de sens contraire à celui-ci. Cette petite variation sera encore plus atténuée en présence de solution tampon, il semble donc normal qu'elle soit pratiquement invisible dans la version du code initiale.\\
 
-Les autres variables gardent un comportement inchangé, mis à part la quantité intracellulaire de $H^+$. En effet, en supprimant la solution tampon nous modifions l'équilibre des ions hydrogènes. Les ions $H^+$ qui ont ici tendance à rentrer dans le globule rouge, formeront un flux d'autant plus important que la concentration extra-cellulaire $C_H^m$ est importante. On observe que la solution tampon agit dans notre cas afin d'éviter que le milieu extracellaire ne devienne trop basique, elle a donc tendance à libérer des ions $H^+$ et de ce fait, augmenter la concentration d'ions hydrogènes dans la solution extracellulaire. Par conséquent, le flux d'ions H+ est alors plus important, et la variation de $Q_H$ plus forte en présence de la solution tampon.\\
+Les autres variables gardent un comportement inchangé, mis à part la quantité intracellulaire de $H^+$. En effet, en supprimant la solution tampon nous modifions l'équilibre des ions hydrogènes. Les ions $H^+$ qui ont ici tendance à rentrer dans le globule rouge, formeront un flux d'autant plus important que la concentration extracellulaire $C_H^m$ est importante. On observe que la solution tampon agit dans notre cas afin d'éviter que le milieu extracellaire ne devienne trop basique, elle a donc tendance à libérer des ions $H^+$ et de ce fait, augmenter la concentration d'ions hydrogènes dans la solution extracellulaire. Par conséquent, le flux d'ions $H^+$ est alors plus important, et la variation de $Q_H$ plus forte en présence de la solution tampon.\\
 
-L'ensemble de nos résultats semblant en adéquation avec les réalités biologiques, on peut supposer que la version originale de notre modèle reflète réellement l'équilibre atteint au sein du globule rouge, sous les conditions que nous avons définies.\\
+L'ensemble de nos résultats semblant en adéquation avec les réalités biologiques, nous pouvons supposer que la version originale de notre modèle reflète réellement l'équilibre atteint au sein du globule rouge dans les conditions que nous avons définies.\\
 
 \subsection{En considérant $f_{Hb}$ variable} 
 
@@ -484,12 +481,16 @@ $c$ & $0.0258$   \\
 \caption{Version modifiée du code, avec $f_{Hb}$ variable.}
 \end{figure} 
 
-Si les tendances sont globalement les mêmes, on  observe toutefois des quantités physico-chimique qui ne se stabilisent que très rarement. Cette observation va à l'encontre des résultats de la publication de Virgilio L.LEW et Robert M.BOOKCHIN, ainsi que des attentes d'un tel système biologique. Nous avons donc préféré conserver la version initiale du code, plus représentative des résultats théoriques attendus.
+Si les tendances sont globalement les mêmes, on  observe toutefois des quantités physico-chimiques qui ne se stabilisent que très rarement. Cette observation va à l'encontre des résultats de la publication de Virgilio L.LEW et Robert M.BOOKCHIN, ainsi que des attentes d'un tel système biologique. Nous avons donc préféré conserver la version initiale du code, plus représentative des résultats théoriques attendus.
 
 
 \section{Conclusion} 
 
-+ ( bibliographie ? ou juste citer l'article dans l'intro)
+Les références complètes de l'article sont :
+
+Lew,V.L., Bookchin, R.M. 1986. Volume, pH, and Ion-Content Regulation in Human Red Cells : Analysis of Transient Behavior with  an Integrate Model. \textit{J. Membrane Biol}. \textbf{92}:57-74.
+
+
 + ( lien du code ? Si posté sur internet )
  
 
