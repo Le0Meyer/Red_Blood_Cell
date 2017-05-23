@@ -226,7 +226,7 @@ plt.legend(loc='best')
 plt.grid()
 
 plt.subplot(2, 3, 4)
-plt.plot(t, E* 10**3)
+plt.plot(t, E)
 plt.xlabel('Temps en heure')
 plt.ylabel('E en mV')
 plt.grid()
