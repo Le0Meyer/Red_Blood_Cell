@@ -392,18 +392,18 @@ $Ht$ & $0.1$   \\
 \textit{NB : Ht est une variable mais elle n'intervient pas dans le système d'équations différentielles, car sa valeur peut être calculée directement à l'aide de celle de $V_w$.}\\
 \\
 
-En choisissant un intervalle de temps d'une heure et en faisant varier $P_{GA}$ entre 0.2 et 200 $h^{-1}$, nous obtenons les résultats suivants :
+En choisissant un intervalle de temps d'une heure et en faisant varier $P_{A}^{G}$ entre 0.2 et 200 $h^{-1}$, nous obtenons les résultats suivants :
 
 \begin{figure}[H]
 \centering 
 \includegraphics[width=1.1\textwidth]{original_hum.png}
-\caption{Variation de $Q_{A}$, $Q_{K}$, $pH^{c}$, $pH^{m}$, $E$ et $V_{w}$ en fonction du temps.\newline{Légende de $P_{GA}$ : bleu foncé = 0.2 $h^{-1}$, vert = 2 $h^{-1}$, rouge = 20 $h^{-1}$, bleu clair = 200 $h^{-1}$.}}
+\caption{Variation de $Q_{A}$, $Q_{K}$, $pH^{c}$, $pH^{m}$, $E$ et $V_{w}$ en fonction du temps.\newline{Légende de $P_{A}^{G}$ : bleu foncé = 0.2 $h^{-1}$, vert = 2 $h^{-1}$, rouge = 20 $h^{-1}$, bleu clair = 200 $h^{-1}$.}}
 \end{figure} 
 
  
 
 
-Ces courbes sont très similaires à celles obtenues dans la publication, néanmoins on remarque que deux valeurs diffèrent légèrement. D'abord la valeur seuil de $\frac{V_w}{V_w^{(0)}}$ devrait se situer aux alentours de 0.63, ensuite la valeur initiale de $E$ est légèrement trop haute pour le cas $P_{GA} = 0.2\,h^{-1}$ : elle devrait se situer à environ -82 mV. Les tendances générales sont donc plutôt bonnes, si on ne tient pas compte du $pH^m$.\\
+Ces courbes sont très similaires à celles obtenues dans la publication, néanmoins on remarque que deux valeurs diffèrent légèrement. D'abord la valeur seuil de $\frac{V_w}{V_w^{(0)}}$ devrait se situer aux alentours de 0.63, ensuite la valeur initiale de $E$ est légèrement trop haute pour le cas $P_{A}^{G} = 0.2\,h^{-1}$ : elle devrait se situer à environ -82 mV. Les tendances générales sont donc plutôt bonnes, si on ne tient pas compte du $pH^m$.\\
 
 Le $pH^m$ est la seule variable à ne pas du tout suivre la tendance décrite dans la publication : en se référant à notre modèle, $pH^m$ varie de manière pratiquement négligeable (il apparaît constant sur le graphique, à l'échelle de la variation de $pH^m$), alors qu'il semble être le parfait symétrique vertical de $pH^c$ d'après Virgilio L.LEW et Robert M.BOOKCHIN. Afin de résoudre ce problème, nous avons mis au point différentes versions de notre programme, correspondant chacune à une hypothèse de base.
 
@@ -416,7 +416,7 @@ Plusieurs arguments semblent être en faveur d'un $pH^m$ variant peu. Tout d'abo
 
 Un deuxième argument est que dans notre cas, $Ht$ est fixé au départ à une valeur de 0.1. Cela signifie que le volume extracellulaire est neuf fois plus important que le volume intracellulaire, donc une petite variation de la quantité d'ions hydrogène aura neuf fois plus d'impact en terme de variation de concentration, dans le compartiment intracellulaire que extracellulaire. Cette tendance devrait pouvoir se lire dans le pH, qui devrait varier plus faiblement dans le milieu extracellulaire.\\
 
-Afin de vérifier cette seconde hypothèse, nous avons réécrit le modèle sans tenir compte de la solution tampon. Dans un soucis de clarté, nous avons aussi fixé $P_{GA}$ à $2\,h^{-1}$.\\
+Afin de vérifier cette seconde hypothèse, nous avons réécrit le modèle sans tenir compte de la solution tampon. Dans un soucis de clarté, nous avons aussi fixé $P_{A}^{G}$ à $2\,h^{-1}$.\\
 
 Le second modèle ne considérant pas la solution tampon, une hypothèse légitime consistait à définir la quantité totale d'ions $H^+$ comme une constante. \\
 
