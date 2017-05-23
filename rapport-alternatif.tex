@@ -41,10 +41,21 @@
 
 \subsection*{Introduction}
 
-Dans ce rapport, nous nous intéresserons aux variations des quantités physico-chimiques  du globule rouge humain, en nous appuyant sur le modèle écrit par Virgilio L.LEW et Robert M.BOOKCHIN. Le but d'un tel modèle est de quantifier et qualifier les flux d'espèces chimiques, les variations de volume et de pH, dans le globule rouge et son milieu environnant. Pour cela nous allons implémenter un système d'équations différentielles sous python et utiliser un solveur pour le résoudre.
+Dans ce rapport, nous nous intéresserons aux variations des quantités physico-chimiques  du globule rouge humain, en nous appuyant sur le modèle écrit par Virgilio L.LEW et Robert M.BOOKCHIN. Le but d'un tel modèle est de quantifier et qualifier les flux d'espèces chimiques, les variations de volume et de pH, dans le globule rouge et son milieu environnant. Pour cela nous allons implémenter un système d'équations différentielles sous python et utiliser un solveur pour le résoudre.\\
+\\
 
+\begin{figure}[H]
+\centering 
+\includegraphics[width=\textwidth]{globule_rouge.png}
+\caption{Flux et variables du modèle du globule rouge}
+\end{figure} 
+
+
+\newpage
 
 \tableofcontents              % Table des matiÃ¨res
+
+\newpage
 
 % \part{Titre}                % Commencer une partie...
 
@@ -175,6 +186,10 @@ E=\dfrac{-RT}{F}\,\ln\left(\dfrac{P_{Na}^{G}\,\dfrac{Q_{Na}}{V_w}+P_{K}^{G}\,\df
 \subsubsection*{Concentration extracellulaire de H (dont on a besoin pour déterminer $\Phi^{HA}$)}
 \begin{equation}
 {C_{H}^{c,m}=\exp_{10}{\left(-pH^{c,m}\right)}}\Longleftrightarrow{pH^{c,m}=-\log{\left(-C_{H}^{c,m}\right)}}\label{eq:pH}
+\end{equation}
+
+\begin{equation}
+C_{H}^{m}=K_B\,\dfrac{C_{HB}^m}{C_{B}^m-C_{HB}^m}
 \end{equation}
 
 \subsubsection*{Variation de $Ht$}
