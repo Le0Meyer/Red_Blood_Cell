@@ -1,1 +1,1 @@
-This is a model for red blood cells
+Ce code à pour but de modéliser les variations des quantités physico-chimiques du globule rouge humain en nous appuyant sur le modèle écrit par Virgilio L.LEW et Robert M.BOOKCHIN. Le but d'un tel modèle est de quantifier et qualifier les flux d'espèces chimiques, les variations de volume et de pH, dans le globule rouge et son milieu environnant. Pour cela nous avons implémenté un système d'équations différentielles sous python et utiliser un solveur LSODA pour le résoudre.
